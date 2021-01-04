@@ -22,4 +22,12 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         //Método para realizar qualquer atualização no BD, como incluir um campo numa tabela, por exemplo
 
     }
+
+    public SQLiteDatabase estabeleceConexao() {
+        return this.getWritableDatabase();
+    }
+
+    public void fechaConexao(){
+        this.getWritableDatabase().close();
+    }
 }
