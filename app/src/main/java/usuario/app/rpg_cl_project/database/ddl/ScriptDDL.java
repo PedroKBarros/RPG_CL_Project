@@ -82,7 +82,7 @@ public class ScriptDDL {
 
     public static String getCreateTableTbAbertura(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_ABERTURA(id INT NOT NULL PRIMARY KEY AUTOINCREMENT, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_ABERTURA(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
         sql.append("texto VARCHAR(1000) NOT NULL, ");
         sql.append("eh_individual INT NOT NULL, ");
         sql.append("caminho_imagem VARCHAR(300), ");
@@ -145,7 +145,7 @@ public class ScriptDDL {
 
     public static String getCreateTableTbTrecho(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_TRECHO(id INT PRIMARY KEY NOT NULL AUTOINCREMENT, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_TRECHO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
         sql.append("texto VARCHAR(1000) NOT NULL, ");
         sql.append("caminho_imagem VARCHAR(300), ");
         sql.append("caminho_musica VARCHAR(300), ");
@@ -166,7 +166,7 @@ public class ScriptDDL {
 
     public static String getCreateTableTbEvento(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_EVENTO(id INT PRIMARY KEY NOT NULL AUTOINCREMENT, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_EVENTO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
         sql.append("texto VARCHAR(1000) NOT NULL, ");
         sql.append("id_trecho INT NOT NULL, ");
         sql.append("CONSTRAINT fk_tb_evento_tb_trecho FOREIGN KEY(id_trecho) ");
@@ -177,11 +177,11 @@ public class ScriptDDL {
 
     public static String getCreateTableTbAcao(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_ACAO(id INT NOT NULL PRIMARY KEY AUTOINCREMENT, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_ACAO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
         sql.append("nome VARCHAR(30) NOT NULL, ");
-        sql.append("id_trecho_inicial INT NOT NULL, ");
-        sql.append("id_trecho_seguinte INT NOT NULL, ");
-        sql.append("id_evento INT NOT NULL, ");
+        sql.append("id_trecho_inicial INTEGER NOT NULL, ");
+        sql.append("id_trecho_seguinte INTEGER NOT NULL, ");
+        sql.append("id_evento INTEGER NOT NULL, ");
         sql.append("CONSTRAINT fk_tb_acao_tb_trecho1 FOREIGN KEY(id_trecho_inicial) ");
         sql.append("REFERENCES tb_trecho(id), ");
         sql.append("CONSTRAINT fk_tb_acao_tb_trecho2 FOREIGN KEY(id_trecho_seguinte) ");
@@ -194,7 +194,7 @@ public class ScriptDDL {
 
     public static String getCreateTableTbCaractAcao(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT_ACAO(id_acao INT NOT NULL, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT_ACAO(id_acao INTEGER NOT NULL, ");
         sql.append("nome_tipo_caract VARCHAR(20) NOT NULL, ");
         sql.append("CONSTRAINT pk_tb_caract_acao PRIMARY KEY(id_acao, nome_tipo_caract), ");
         sql.append("CONSTRAINT fk_tb_caract_acao_tb_acao FOREIGN KEY(id_acao) ");
@@ -207,7 +207,7 @@ public class ScriptDDL {
 
     public static String getCreateTableTbCaractEvento(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT_EVENTO(id_evento INT NOT NULL, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT_EVENTO(id_evento INTEGER NOT NULL, ");
         sql.append("nome_tipo_caract VARCHAR(20) NOT NULL, ");
         sql.append("CONSTRAINT pk_tb_caract_evento PRIMARY KEY(id_evento, nome_tipo_caract), ");
         sql.append("CONSTRAINT fk_tb_caract_evento_tb_evento FOREIGN KEY(id_evento) ");
@@ -222,7 +222,7 @@ public class ScriptDDL {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_MOMENTO(nome_jogo VARCHAR(40) NOT NULL, ");
         sql.append("nome_personagem VARCHAR(30) NOT NULL, ");
-        sql.append("id_trecho INT NOT NULL, ");
+        sql.append("id_trecho INTEGER NOT NULL, ");
         sql.append("CONSTRAINT pk_tb_momento PRIMARY KEY(nome_jogo, nome_personagem), ");
         sql.append("CONSTRAINT fk_tb_momento_tb_jogo FOREIGN KEY(nome_jogo) ");
         sql.append("REFERENCES tb_jogo(nome), ");
@@ -236,8 +236,8 @@ public class ScriptDDL {
 
     public static String getCreateTableTbConfigApp(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_CONFIG_APP(id INT PRIMARY KEY ");
-        sql.append("NOT NULL AUTOINCREMENT, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_CONFIG_APP(id INTEGER NOT NULL PRIMARY KEY ");
+        sql.append("AUTOINCREMENT, ");
         sql.append("chave VARCHAR(40) NOT NULL, ");
         sql.append("valor_min INT NOT NULL, ");
         sql.append("valor_max INT NOT NULL, ");
