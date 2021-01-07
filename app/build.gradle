@@ -6,6 +6,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    repositories{
+        google()
+    }
+
     defaultConfig {
         applicationId "usuario.app.rpg_cl_project"
         minSdkVersion 21
