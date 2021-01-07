@@ -2,6 +2,7 @@ package usuario.app.rpg_cl_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.database.SQLException;
@@ -11,6 +12,7 @@ import usuario.app.rpg_cl_project.database.ddl.DadosOpenHelper;
 public class MainActivity extends AppCompatActivity {
 
     MainActivity activityAtual;
+    TextView txtViewAuthor;
     private SQLiteDatabase conexao;
     private DadosOpenHelper dadosOpenHelper;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activityAtual = this;
+
         new Thread(new Runnable() {
             public void run() {
                 try {
