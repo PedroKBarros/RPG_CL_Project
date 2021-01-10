@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/selected_button" android:state_pressed="true" /> <!-- pressionado -->
+    <item android:drawable="@drawable/selected_button" android:state_focused="true" /> <!-- com foco -->
+    <item android:drawable="@drawable/normal_button" /> <!-- normal-->
+</selector>
