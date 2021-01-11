@@ -13,5 +13,35 @@ public class GeneralSetting {
         this.valorMax = valorMax;
     }
 
+    public String getChave() {
+        return chave;
+    }
 
+    public void setChave(String chave) {
+        this.chave = chave;
+    }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public int getValorMin() {
+        return valorMin;
+    }
+
+    public void setValorMin(int valorMin) {
+        this.valorMin = valorMin;
+    }
+
+    public int getValorMax() {
+        return valorMax;
+    }
+
+    public void setValorMax(int valorMax) {
+        this.valorMax = valorMax;
+    }
 }
