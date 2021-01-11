@@ -1,4 +1,4 @@
-package usuario.app.rpg_cl_project.dominio;
+package usuario.app.rpg_cl_project.domain;
 
 import java.util.ArrayList;
 import java.util.List;

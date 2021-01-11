@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import usuario.app.rpg_cl_project.dominio.AppSetting;
-import usuario.app.rpg_cl_project.dominio.GeneralSetting;
+import usuario.app.rpg_cl_project.domain.AppSetting;
+import usuario.app.rpg_cl_project.domain.GeneralSetting;
 
 public class AppSettingRepository {
     private SQLiteDatabase conexao;
