@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="activity_background_color">#3E3E3E</color>
     <color name="thematic_orange_color">#E07E54</color>
+    <color name="second_text_color">#D4D1D1</color>
 </resources>
