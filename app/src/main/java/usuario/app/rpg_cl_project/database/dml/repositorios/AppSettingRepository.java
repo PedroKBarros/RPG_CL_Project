@@ -14,7 +14,7 @@ public class AppSettingRepository {
 
     public AppSettingRepository(SQLiteDatabase conexao){ this.conexao = conexao; }
 
-    public AppSetting queryAllTuples(){
+    public AppSetting queryAppSetting(){
         List<GeneralSetting> generalSettings = new ArrayList<GeneralSetting>();
         AppSetting appSetting = new AppSetting();
         String chave;
