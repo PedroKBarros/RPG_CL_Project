@@ -10,6 +10,7 @@
 
     <include layout="@layout/complete_header_out_play" />
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +21,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="20dp">
+
+            <Switch
+                android:id="@+id/swt_buttons_sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/red_rose"
+                android:letterSpacing="0.2"
+                android:switchMinWidth="60dp"
+                android:switchPadding="18dp"
+                android:text="SOM DOS BOTÕES:"
+                android:textAlignment="textEnd"
+                android:textColor="@color/second_text_color"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.089"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="412dp"
+                android:layout_height="wrap_content"
+                android:background="@color/thematic_orange_color"
+                android:fontFamily="@font/red_rose"
+                android:letterSpacing="0.2"
+                android:text="   GERAL:"
+                android:textAlignment="textStart"
+                android:textColor="@color/second_text_color"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
