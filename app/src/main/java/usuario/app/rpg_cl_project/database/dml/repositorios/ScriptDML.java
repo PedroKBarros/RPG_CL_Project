@@ -1,9 +1,9 @@
 package usuario.app.rpg_cl_project.database.dml.repositorios;
 
-public class ScriptQuery {
+public class ScriptDML {
     public static String getQueryAppSettingAllTuples(){
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM TB_CONFIG_APP");
+        sql.append("SELECT chave, valor, valor_min, valor_max FROM TB_CONFIG_APP");
 
         return sql.toString();
     }
