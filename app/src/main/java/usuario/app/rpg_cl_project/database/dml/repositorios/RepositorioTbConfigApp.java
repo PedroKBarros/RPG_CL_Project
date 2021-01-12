@@ -6,17 +6,16 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import usuario.app.rpg_cl_project.domain.AppSetting;
-import usuario.app.rpg_cl_project.domain.GeneralSetting;
+import usuario.app.rpg_cl_project.domain.ConfiguracaoGeral;
 
-public class AppSettingRepository {
+public class RepositorioTbConfigApp {
     private SQLiteDatabase conexao;
 
-    public AppSettingRepository(SQLiteDatabase conexao){ this.conexao = conexao; }
+    public RepositorioTbConfigApp(SQLiteDatabase conexao){ this.conexao = conexao; }
 
 
-    public List<GeneralSetting> buscarTodasTuplas(){
-        List<GeneralSetting> generalSettings = new ArrayList<GeneralSetting>();
+    public List<ConfiguracaoGeral> buscarTodasTuplas(){
+        List<ConfiguracaoGeral> configuracoesGerais = new ArrayList<ConfiguracaoGeral>();
         String chave;
         int valor, valorMin, valorMax;
 
@@ -26,20 +25,20 @@ public class AppSettingRepository {
             //Garantindo q a gnt vai ter os resultados a
             // partir do  primeiro registro:
             cursor.moveToFirst();
-            //Transformando o resultado em List<GeneralSetting>:
+            //Transformando o resultado em List<ConfiguracaoGeral>:
             do{
-                //Convertendo os valores da tabela em atributos da classe GeneralSetting
+                //Convertendo os valores da tabela em atributos da classe ConfiguracaoGeral
                 chave = cursor.getString(cursor.getColumnIndex("chave"));
                 valor = cursor.getInt(cursor.getColumnIndex("valor"));
                 valorMin = cursor.getInt(cursor.getColumnIndex("valor_min"));
                 valorMax = cursor.getInt(cursor.getColumnIndex("valor_max"));
-                GeneralSetting generalSetting = new GeneralSetting(chave, valor, valorMin, valorMax);
+                ConfiguracaoGeral configuracaoGeral = new ConfiguracaoGeral(chave, valor, valorMin, valorMax);
 
-                generalSettings.add(generalSetting);
+                configuracoesGerais.add(configuracaoGeral);
             }while(cursor.moveToNext());//Enquanto houver registro,
             // vamos mover o resultado para o próximo registro. Esse método retorna true, caso tenha conseguido mover.
         }
 
-        return generalSettings;
+        return configuracoesGerais;
     }
 }

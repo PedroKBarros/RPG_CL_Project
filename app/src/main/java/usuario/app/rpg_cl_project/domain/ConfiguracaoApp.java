@@ -3,10 +3,10 @@ package usuario.app.rpg_cl_project.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppSetting {
+public class ConfiguracaoApp {
     private List<ConfiguracaoGeral> configuracoesGerais;
 
-    public AppSetting(){
+    public ConfiguracaoApp(){
         this.configuracoesGerais = new ArrayList<ConfiguracaoGeral>();
     }
 
