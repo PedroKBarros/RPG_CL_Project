@@ -60,6 +60,7 @@ public class SettingActivity extends AppCompatActivity {
                 try {
                     establishesDBConnection();
                     instantRepository();
+
                     activityAtual.runOnUiThread(new Runnable() {
                         public void run() {
                             mostraMensagemToast("Conexão com BD estabelicidaaa!", Toast.LENGTH_SHORT);
@@ -70,10 +71,20 @@ public class SettingActivity extends AppCompatActivity {
                     //Coloquei esse if enquanto não se povoa a tabela de configurações do app:
                     if (!appSetting.getGeneralSettings().isEmpty()){
                         GeneralSetting generalSetting = appSetting.getGeneralSettings().get(0);
-                        if (generalSetting.getValor() == 0)
-                            switchMusicSoundConfig.setChecked(false);
-                        else
-                            switchMusicSoundConfig.setChecked(true);
+                        if (generalSetting.getValor() == 0) {
+                            activityAtual.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    switchMusicSoundConfig.setChecked(false);
+                                }
+                            });
+
+                        }else {
+                            activityAtual.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    switchMusicSoundConfig.setChecked(true);
+                                }
+                            });
+                        }
                     }
 
                     dadosOpenHelper.fechaConexao();
