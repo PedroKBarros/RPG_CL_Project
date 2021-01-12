@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import usuario.app.rpg_cl_project.database.dml.repositorios.ScriptDML;
+
 public class DadosOpenHelper extends SQLiteOpenHelper {
 
     private static final String NOME_BD = "BD_RPG_CL_PROJECT.db";
@@ -21,6 +23,7 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         /*A primeira vez que o método getWritableDataBase() for chamado,
         o onCreate, onUpgrade() e o onOpen(), esse último de implementação opcional,
         serão chamados*/
+        //Criacao de tabelas:
         db.execSQL(ScriptDDL.getCreateTableTbPersonagemJog());
         db.execSQL(ScriptDDL.getCreateTableTbCategoriaTipo());
         db.execSQL(ScriptDDL.getCreateTableTbCenario());
@@ -40,6 +43,10 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ScriptDDL.getCreateTableTbMomento());
         db.execSQL(ScriptDDL.getCreateTableTbConfigApp());
 
+        //Inserção de dados prévios:
+        //  TB_CONFIG_APP:
+        db.execSQL(ScriptDML.retornaInsercaoConfigSomBotoesTuplaTbConfigApp());
+
     }
 
     @Override
@@ -54,5 +61,9 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
 
     public void fechaConexao(){
         this.getWritableDatabase().close();
+    }
+
+    public void fechaBD(){
+        this.close();
     }
 }
