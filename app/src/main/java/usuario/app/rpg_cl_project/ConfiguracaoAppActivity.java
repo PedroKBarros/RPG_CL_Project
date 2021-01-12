@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -65,27 +66,22 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
 
                     configuracaoApp = new ConfiguracaoApp();
                     configuracaoApp.setConfiguracoesGerais(repositorioTbConfigApp.buscarTodasTuplas());
-                    //Coloquei esse if enquanto não se povoa a tabela de configurações do app:
-                    if (!configuracaoApp.getConfiguracoesGerais().isEmpty()){
-                        ConfiguracaoGeral configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(0);
-                        if (configuracaoGeral.getValor() == 0) {
-                            activityAtual.runOnUiThread(new Runnable() {
-                                public void run() {
+                    ConfiguracaoGeral configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(0);
+                    if (configuracaoGeral.getValor() == 0) {
+                        activityAtual.runOnUiThread(new Runnable() {
+                            public void run() {
                                     switchConfigSomBotoes.setChecked(false);
                                 }
-                            });
-
-                        }else {
-                            activityAtual.runOnUiThread(new Runnable() {
-                                public void run() {
+                        });
+                    }else{
+                        activityAtual.runOnUiThread(new Runnable() {
+                            public void run() {
                                     switchConfigSomBotoes.setChecked(true);
                                 }
-                            });
+                        });
                         }
-                    }
-
                     dadosOpenHelper.fechaConexao();
-                }catch(android.database.SQLException e){
+                }catch(SQLException e){
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
                     mostraMensagemToast(e.getMessage(), Toast.LENGTH_SHORT);
                 }finally {
