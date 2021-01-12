@@ -7,9 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DadosOpenHelper extends SQLiteOpenHelper {
+
+    private static final String NOME_BD = "BD_RPG_CL_PROJECT.db";
+    private static int VERSAO_BD = 1;
+
     //Construtor
     public DadosOpenHelper(@Nullable Context context) {
-        super(context, "BD_RPG_CL_PROJECT", null, 1);
+        super(context, NOME_BD, null, VERSAO_BD);
     }
 
     @Override
