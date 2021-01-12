@@ -5,15 +5,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activity_background_color"
+    android:background="@color/cor_fundo_activitys"
     android:gravity="center_horizontal">
 
-    <include layout="@layout/simple_header" />
+    <include layout="@layout/cabecalho_simples" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activity_background_color"
+        android:background="@color/cor_fundo_activitys"
         tools:context=".MenuAcitivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,10 +22,10 @@
             android:paddingTop="20dp">
 
             <Button
-                android:id="@+id/bt_continue_game"
+                android:id="@+id/bt_continuar_jogo"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="CONTINUAR\nJOGO"
@@ -37,27 +37,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/bt_new_game"
+                android:id="@+id/bt_novo_jogo"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="NOVO\nJOGO"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bt_continue_game" />
+                app:layout_constraintTop_toBottomOf="@+id/bt_continuar_jogo" />
 
             <Button
-                android:id="@+id/bt_new_character"
+                android:id="@+id/bt_novo_personagem"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="NOVO\nPERSONAGEM"
@@ -65,31 +65,31 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/bt_new_game"
-                app:layout_constraintTop_toBottomOf="@+id/bt_continue_game" />
+                app:layout_constraintStart_toEndOf="@+id/bt_novo_jogo"
+                app:layout_constraintTop_toBottomOf="@+id/bt_continuar_jogo" />
 
             <Button
-                android:id="@+id/bt_statistics"
+                android:id="@+id/bt_estatisticas"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="ESTATÍSTICAS"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bt_new_game" />
+                app:layout_constraintTop_toBottomOf="@+id/bt_novo_jogo" />
 
             <Button
-                android:id="@+id/bt_settings"
+                android:id="@+id/bt_config"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="CONFIG"
@@ -97,31 +97,31 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/bt_statistics"
-                app:layout_constraintTop_toBottomOf="@+id/bt_new_character" />
+                app:layout_constraintStart_toEndOf="@+id/bt_estatisticas"
+                app:layout_constraintTop_toBottomOf="@+id/bt_novo_personagem" />
 
             <Button
-                android:id="@+id/bt_about"
+                android:id="@+id/bt_sobre"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="SOBRE"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bt_statistics" />
+                app:layout_constraintTop_toBottomOf="@+id/bt_estatisticas" />
 
             <Button
-                android:id="@+id/bt_quit"
+                android:id="@+id/bt_sair"
                 android:layout_width="170dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/button"
+                android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="SAIR"
@@ -129,8 +129,8 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/bt_about"
-                app:layout_constraintTop_toBottomOf="@+id/bt_settings" />
+                app:layout_constraintStart_toEndOf="@+id/bt_sobre"
+                app:layout_constraintTop_toBottomOf="@+id/bt_config" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

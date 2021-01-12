@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -13,39 +12,36 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import usuario.app.rpg_cl_project.database.ddl.DadosOpenHelper;
-import usuario.app.rpg_cl_project.database.dml.repositorios.AppSettingRepository;
-import usuario.app.rpg_cl_project.domain.AppSetting;
-import usuario.app.rpg_cl_project.domain.GeneralSetting;
+import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbConfigApp;
+import usuario.app.rpg_cl_project.dominio.ConfiguracaoApp;
+import usuario.app.rpg_cl_project.dominio.ConfiguracaoGeral;
 
-public class SettingActivity extends AppCompatActivity {
+public class ConfiguracaoAppActivity extends AppCompatActivity {
 
-    SettingActivity activityAtual;
+    ConfiguracaoAppActivity activityAtual;
     private SQLiteDatabase conexao;
     private DadosOpenHelper dadosOpenHelper;
-    private AppSettingRepository appSettingRepository;
-    private AppSetting appSetting;
-    private Switch switchMusicSoundConfig;
+    private RepositorioTbConfigApp repositorioTbConfigApp;
+    private ConfiguracaoApp configuracaoApp;
+    private Switch switchConfigSomBotoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_general_setting);
+        setContentView(R.layout.activity_configuracao_app);
 
-        switchMusicSoundConfig = (Switch) findViewById(R.id.swt_buttons_sound);
+        switchConfigSomBotoes = (Switch) findViewById(R.id.swt_som_botoes);
         ConstraintLayout header = (ConstraintLayout) findViewById(
                                                                 R.id.complete_header_out_play);
-        TextView headerTitle = (TextView) header.getViewById(R.id.txt_header_title);
+        TextView headerTitle = (TextView) header.getViewById(R.id.txt_titulo_cabecalho);
         headerTitle.setText("CONFIGURAÇÕES");
-        Button buttonHelp = (Button) header.getViewById(R.id.bt_header_help);
+        Button buttonHelp = (Button) header.getViewById(R.id.bt_ajuda_cabecalho);
 
         buttonHelp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                AlertDialog.Builder helpAlert = new AlertDialog.Builder(SettingActivity.this);
+                AlertDialog.Builder helpAlert = new AlertDialog.Builder(ConfiguracaoAppActivity.this);
                 helpAlert.setMessage("Essa tela permite que você configure diversos parâmetros " +
                         "do GRG I como quiser! Todas as configurações daqui são aplicadas " +
                         "em todo o app.");
@@ -58,8 +54,8 @@ public class SettingActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    establishesDBConnection();
-                    instantRepository();
+                    estabeleceConexaoBD();
+                    instanciaRepositorio();
 
                     activityAtual.runOnUiThread(new Runnable() {
                         public void run() {
@@ -67,21 +63,21 @@ public class SettingActivity extends AppCompatActivity {
                         }
                     });
 
-                    appSetting = appSettingRepository.queryAppSetting();
+                    configuracaoApp.setConfiguracoesGerais(repositorioTbConfigApp.buscarTodasTuplas());
                     //Coloquei esse if enquanto não se povoa a tabela de configurações do app:
-                    if (!appSetting.getGeneralSettings().isEmpty()){
-                        GeneralSetting generalSetting = appSetting.getGeneralSettings().get(0);
-                        if (generalSetting.getValor() == 0) {
+                    if (!configuracaoApp.getConfiguracoesGerais().isEmpty()){
+                        ConfiguracaoGeral configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(0);
+                        if (configuracaoGeral.getValor() == 0) {
                             activityAtual.runOnUiThread(new Runnable() {
                                 public void run() {
-                                    switchMusicSoundConfig.setChecked(false);
+                                    switchConfigSomBotoes.setChecked(false);
                                 }
                             });
 
                         }else {
                             activityAtual.runOnUiThread(new Runnable() {
                                 public void run() {
-                                    switchMusicSoundConfig.setChecked(true);
+                                    switchConfigSomBotoes.setChecked(true);
                                 }
                             });
                         }
@@ -99,11 +95,11 @@ public class SettingActivity extends AppCompatActivity {
 
     }
 
-    private void instantRepository(){
-        this.appSettingRepository = new AppSettingRepository(this.conexao);
+    private void instanciaRepositorio(){
+        this.repositorioTbConfigApp = new RepositorioTbConfigApp(this.conexao);
     }
 
-    private void establishesDBConnection() throws android.database.SQLException{
+    private void estabeleceConexaoBD() throws android.database.SQLException{
         //Método que vai criar a conexão com o BD em si. Esse método não cria nenhuma estrutura, apenas conecta com o BD
         dadosOpenHelper = new DadosOpenHelper(this); //Lembre-se que nosso contrutor pede o contexto, ou seja, a Activity em questão
         //Criando conexão

@@ -6,20 +6,19 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import usuario.app.rpg_cl_project.domain.ConfiguracaoGeral;
+import usuario.app.rpg_cl_project.dominio.ConfiguracaoGeral;
 
 public class RepositorioTbConfigApp {
     private SQLiteDatabase conexao;
 
     public RepositorioTbConfigApp(SQLiteDatabase conexao){ this.conexao = conexao; }
 
-
     public List<ConfiguracaoGeral> buscarTodasTuplas(){
         List<ConfiguracaoGeral> configuracoesGerais = new ArrayList<ConfiguracaoGeral>();
         String chave;
         int valor, valorMin, valorMax;
 
-        Cursor cursor = conexao.rawQuery(ScriptDML.getQueryAppSettingAllTuples(), null); //Método para escrever consulta SQL, passando a String da consulta e parâmetros da consulta em um vetor de Strings
+        Cursor cursor = conexao.rawQuery(ScriptDML.retornaConsultaTodasConfiguracoesGerais(), null); //Método para escrever consulta SQL, passando a String da consulta e parâmetros da consulta em um vetor de Strings
         //Verificando se algum registro foi retornado:                         //O primeiro parâmetro é a quary e o outro são os argumentos. Porém, como não temos argumentos, pois não usamos a clausula where, coloquei como null.
         if (cursor.getCount() > 0){                                           //Ele retorna um objeto Cursor, que contém as tuplas de resultado. Vamos converter para List<Cliente>.
             //Garantindo q a gnt vai ter os resultados a

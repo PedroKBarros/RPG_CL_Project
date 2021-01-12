@@ -5,17 +5,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activity_background_color"
+    android:background="@color/cor_fundo_activitys"
     android:gravity="center_horizontal">
 
-    <include layout="@layout/complete_header_out_play" />
+    <include layout="@layout/cabecalho_completo_telas_fora_jogo" />
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activity_background_color"
-        tools:context=".SettingActivity">
+        android:background="@color/cor_fundo_activitys"
+        tools:context=".ConfiguracaoAppActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:paddingTop="20dp">
 
             <Switch
-                android:id="@+id/swt_buttons_sound"
+                android:id="@+id/swt_som_botoes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -34,7 +34,7 @@
                 android:switchPadding="18dp"
                 android:text="SOM DOS BOTÕES:"
                 android:textAlignment="textEnd"
-                android:textColor="@color/second_text_color"
+                android:textColor="@color/segunda_cor_texto"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.089"
@@ -45,12 +45,12 @@
                 android:id="@+id/textView"
                 android:layout_width="412dp"
                 android:layout_height="wrap_content"
-                android:background="@color/thematic_orange_color"
+                android:background="@color/cor_laranja_tematica"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
                 android:text="   GERAL:"
                 android:textAlignment="textStart"
-                android:textColor="@color/second_text_color"
+                android:textColor="@color/segunda_cor_texto"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

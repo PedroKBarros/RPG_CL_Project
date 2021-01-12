@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activity_background_color"
+    android:background="@color/cor_fundo_activitys"
     tools:context=".MainActivity">
 
     <ImageView
@@ -15,10 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/internal_activities_logo" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/txtViewAuthor"
+        android:id="@+id/txt_autoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="236dp"
@@ -39,12 +39,12 @@
         android:layout_height="wrap_content"
         android:letterSpacing="0.2"
         android:text="BY"
-        android:textColor="@color/thematic_orange_color"
+        android:textColor="@color/cor_laranja_tematica"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtViewAuthor"
+        app:layout_constraintEnd_toStartOf="@+id/txt_autoria"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtViewAuthor"
+        app:layout_constraintTop_toTopOf="@+id/txt_autoria"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

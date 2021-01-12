@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/activity_background_color" >
+    android:background="@color/cor_fundo_activitys" >
 
     <ImageView
         android:layout_width="227dp"
@@ -19,5 +19,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        android:src="@drawable/internal_activities_logo" />
+        android:src="@drawable/logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

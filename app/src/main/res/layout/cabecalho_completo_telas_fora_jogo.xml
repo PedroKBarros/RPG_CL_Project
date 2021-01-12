@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/activity_background_color"
+    android:background="@color/cor_fundo_activitys"
     android:id="@+id/complete_header_out_play">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:paddingTop="30dp"
         android:paddingRight="20dp"
         android:paddingBottom="20dp"
-        android:src="@drawable/internal_activities_logo"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/txt_header_title"
+        android:id="@+id/txt_titulo_cabecalho"
         android:layout_width="262dp"
         android:layout_height="28dp"
         android:layout_marginTop="4dp"
@@ -33,23 +33,23 @@
         android:letterSpacing="0.2"
         android:text="TITULO"
         android:textAlignment="center"
-        android:textColor="@color/second_text_color"
+        android:textColor="@color/segunda_cor_texto"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bt_header_help"
+        app:layout_constraintEnd_toStartOf="@+id/bt_ajuda_cabecalho"
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_logo"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/bt_header_help"
+        android:id="@+id/bt_ajuda_cabecalho"
         android:layout_width="43dp"
         android:layout_height="37dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button"
+        android:background="@drawable/botao"
         android:fontFamily="@font/red_rose"
         android:letterSpacing="0.2"
         android:text="\?"

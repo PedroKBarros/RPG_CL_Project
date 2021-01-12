@@ -8,7 +8,7 @@ import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int tempoFechamentoTela = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 // Fecha esta activity
                 finish();
             }
-        }, SPLASH_TIME_OUT);
+        }, tempoFechamentoTela);
 
 
     }
