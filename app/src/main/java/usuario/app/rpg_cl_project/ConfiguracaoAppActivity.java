@@ -63,6 +63,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                         }
                     });
 
+                    configuracaoApp = new ConfiguracaoApp();
                     configuracaoApp.setConfiguracoesGerais(repositorioTbConfigApp.buscarTodasTuplas());
                     //Coloquei esse if enquanto não se povoa a tabela de configurações do app:
                     if (!configuracaoApp.getConfiguracoesGerais().isEmpty()){
