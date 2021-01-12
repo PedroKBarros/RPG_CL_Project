@@ -14,9 +14,9 @@ public class AppSettingRepository {
 
     public AppSettingRepository(SQLiteDatabase conexao){ this.conexao = conexao; }
 
-    public AppSetting queryAppSetting(){
+
+    public List<GeneralSetting> buscarTodasTuplas(){
         List<GeneralSetting> generalSettings = new ArrayList<GeneralSetting>();
-        AppSetting appSetting = new AppSetting();
         String chave;
         int valor, valorMin, valorMax;
 
@@ -40,7 +40,6 @@ public class AppSettingRepository {
             // vamos mover o resultado para o próximo registro. Esse método retorna true, caso tenha conseguido mover.
         }
 
-        appSetting.setGeneralSettings(generalSettings);
-        return appSetting;
+        return generalSettings;
     }
 }
