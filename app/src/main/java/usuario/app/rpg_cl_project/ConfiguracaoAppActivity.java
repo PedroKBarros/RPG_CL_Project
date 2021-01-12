@@ -80,16 +80,22 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                                 }
                         });
                         }
-                    dadosOpenHelper.fechaConexao();
+                    encerraRecursosBD();
                 }catch(SQLException e){
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
                     mostraMensagemToast(e.getMessage(), Toast.LENGTH_SHORT);
                 }finally {
-                    dadosOpenHelper.fechaConexao();
+                    encerraRecursosBD();
                 }
             }
         }).start();
 
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        encerraRecursosBD();
     }
 
     private void instanciaRepositorio(){
@@ -102,6 +108,19 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         //Criando conexão
         conexao = dadosOpenHelper.estabeleceConexao(); //O writable permite leitura e escrita, enquanto q o redtable, só leitura
         //Fecha a activity atual e todas as que estão abaixo na pilha (abertas anteriormente);
+    }
+
+    private void fechaConexao(){
+        dadosOpenHelper.fechaConexao();
+    }
+
+    private void fechaBD(){
+        dadosOpenHelper.fechaBD();
+    }
+
+    private void encerraRecursosBD(){
+        fechaConexao();
+        fechaBD();
     }
 
     private void mostraMensagemToast(String mensagem, int duracao){
