@@ -20,10 +20,11 @@ public class ExecutaAudio {
         this.mediaPlayer = new MediaPlayer();
     }
 
-    public boolean executaAudioThreadUI(String strUri) {
+    public boolean executaAudioThreadUI(String strUri, Boolean repetir) {
         try {
             Uri uri = Uri.parse(strUri);
             this.mediaPlayer.reset();
+            this.mediaPlayer.setLooping(repetir);
             this.mediaPlayer.setDataSource(this.contexto, uri);
             this.mediaPlayer.prepare();
             this.mediaPlayer.start();
@@ -34,7 +35,7 @@ public class ExecutaAudio {
 
     }
 
-    public boolean executaAudioAsync(String strUri)  {
+    public boolean executaAudioAsync(String strUri, Boolean repetir)  {
         MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -53,6 +54,7 @@ public class ExecutaAudio {
         try {
             Uri uri = Uri.parse(strUri);
             this.mediaPlayer.reset();
+            this.mediaPlayer.setLooping(repetir);
             this.mediaPlayer.setDataSource(this.contexto, uri);
             this.mediaPlayer.setOnPreparedListener(preparedListener);
             this.mediaPlayer.setOnErrorListener(errorListener);
