@@ -36,7 +36,7 @@ public class MenuAcitivity extends AppCompatActivity {
         botaoConfig.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                executaSomBotao();
+                executaAudio.executaAudioThreadUI(ExecutaAudio.URI_SOM_CLIQUE_BOTAO);
                 Intent intent = new Intent(getBaseContext(), ConfiguracaoAppActivity.class);
                 startActivity(intent);
             }
@@ -44,7 +44,7 @@ public class MenuAcitivity extends AppCompatActivity {
         botaoSair.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                executaSomBotao();
+                executaAudio.executaAudioThreadUI(ExecutaAudio.URI_SOM_CLIQUE_BOTAO);
                 finishAffinity(); //Fecha a activity atual e todas as que estão abaixo na pilha (abertas anteriormente)
             }
         });
@@ -59,14 +59,6 @@ public class MenuAcitivity extends AppCompatActivity {
 
     private void liberaRecursos(){
         executaAudio.liberaRecursos();
-    }
-
-    private void executaSomBotao(){
-        new Thread(new Runnable() {
-            public void run() {
-                executaAudio.executaAudioAsync(ExecutaAudio.URI_SOM_CLIQUE_BOTAO);
-            }
-        }).start();
     }
 
 }
