@@ -95,7 +95,8 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        encerraRecursosBD();
+
+        liberaRecursos();
     }
 
     private void instanciaRepositorio(){
@@ -121,6 +122,10 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private void encerraRecursosBD(){
         fechaConexao();
         fechaBD();
+    }
+
+    private void liberaRecursos(){
+        encerraRecursosBD();
     }
 
     private void mostraMensagemToast(String mensagem, int duracao){
