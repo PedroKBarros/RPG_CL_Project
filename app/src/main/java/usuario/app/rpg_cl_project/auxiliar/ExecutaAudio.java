@@ -64,10 +64,6 @@ public class ExecutaAudio {
 
     }
 
-    public void executaAudioClickBotaoThreadUI(){
-
-    }
-
     public void pausaAudio()  {
         this.mediaPlayer.pause();
     }
