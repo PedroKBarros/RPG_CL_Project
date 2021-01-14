@@ -35,13 +35,6 @@ public class ExecutaAudio {
     }
 
     public boolean executaAudioAsync(String strUri)  {
-        /*Observação: A thread em que será executada esse método deverá ser a thread diferente da de UI,
-        implementada em quem chama esse método.*/
-        new Thread(new Runnable() {
-            public void run() {
-
-            }
-        }).start();
         MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
