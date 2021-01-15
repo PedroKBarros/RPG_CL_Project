@@ -21,7 +21,8 @@ public class MenuAcitivity extends AppCompatActivity {
 
     private Button botaoConfig;
     private Button botaoSair;
-    private ExecutaAudio executaAudio;
+    private ExecutaAudio execSomCliqueBotoes;
+    private ExecutaAudio execMusicaFundo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,14 @@ public class MenuAcitivity extends AppCompatActivity {
         botaoConfig = (Button) findViewById(R.id.bt_config);
         botaoSair = (Button) findViewById(R.id.bt_sair);
 
-        executaAudio = new ExecutaAudio(this);
+        execSomCliqueBotoes = new ExecutaAudio(this);
+        execMusicaFundo = new ExecutaAudio(this);
 
         botaoConfig.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                executaAudio.executaAudioThreadUI(ExecutaAudio.URI_SOM_CLIQUE_BOTAO);
+                execMusicaFundo.paraExecucao();
+                execSomCliqueBotoes.executaAudioThreadUI(ExecutaAudio.URI_SOM_CLIQUE_BOTAO, false);
                 Intent intent = new Intent(getBaseContext(), ConfiguracaoAppActivity.class);
                 startActivity(intent);
             }
@@ -44,10 +47,17 @@ public class MenuAcitivity extends AppCompatActivity {
         botaoSair.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                executaAudio.executaAudioThreadUI(ExecutaAudio.URI_SOM_CLIQUE_BOTAO);
+                execSomCliqueBotoes.executaAudioThreadUI(ExecutaAudio.URI_SOM_CLIQUE_BOTAO, false);
                 finishAffinity(); //Fecha a activity atual e todas as que estão abaixo na pilha (abertas anteriormente)
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        execMusicaFundo.executaAudioAsync("android.resource://usuario.app.rpg_cl_project/raw/menu_music", true);
     }
 
     @Override
@@ -58,7 +68,8 @@ public class MenuAcitivity extends AppCompatActivity {
     }
 
     private void liberaRecursos(){
-        executaAudio.liberaRecursos();
+        execSomCliqueBotoes.liberaRecursos();
+        execMusicaFundo.liberaRecursos();
     }
 
 }
