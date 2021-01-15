@@ -1,138 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_fundo_activitys"
-    android:gravity="center_horizontal">
-
-    <include layout="@layout/cabecalho_simples" />
-
-    <ScrollView
+    android:background="@color/cor_fundo_activitys">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cor_fundo_activitys"
-        tools:context=".MenuAcitivity">
+        android:orientation="vertical" >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="20dp">
+        <include
+            android:id="@+id/include"
+            layout="@layout/cabecalho_simples" />
 
             <Button
                 android:id="@+id/bt_continuar_jogo"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="CONTINUAR\nJOGO"
-                android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="CONTINUAR JOGO" />
 
             <Button
                 android:id="@+id/bt_novo_jogo"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/botao"
                 android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="NOVO\nJOGO"
-                android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bt_continuar_jogo" />
-
-            <Button
-                android:id="@+id/bt_novo_personagem"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/botao"
-                android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="NOVO\nPERSONAGEM"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/bt_novo_jogo"
-                app:layout_constraintTop_toBottomOf="@+id/bt_continuar_jogo" />
+                android:textStyle="bold"
+                android:text="NOVO_JOGO" />
 
-            <Button
-                android:id="@+id/bt_estatisticas"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/botao"
-                android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="ESTATÍSTICAS"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bt_novo_jogo" />
+        <Button
+            android:id="@+id/bt_novo_personagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/botao"
+            android:fontFamily="@font/red_rose"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="NOVO_PERSONAGEM" />
 
-            <Button
-                android:id="@+id/bt_config"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/botao"
-                android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="CONFIG"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/bt_estatisticas"
-                app:layout_constraintTop_toBottomOf="@+id/bt_novo_personagem" />
+        <Button
+            android:id="@+id/bt_config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/botao"
+            android:fontFamily="@font/red_rose"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="CONFIG" />
 
-            <Button
-                android:id="@+id/bt_sobre"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/botao"
-                android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="SOBRE"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bt_estatisticas" />
+        <Button
+            android:id="@+id/bt_estatisticas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botao"
+            android:fontFamily="@font/red_rose"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="ESTATISTICAS"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
 
-            <Button
-                android:id="@+id/bt_sair"
-                android:layout_width="170dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/botao"
-                android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="SAIR"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/bt_sobre"
-                app:layout_constraintTop_toBottomOf="@+id/bt_config" />
+        <Button
+            android:id="@+id/bt_sobre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botao"
+            android:fontFamily="@font/red_rose"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="SOBRE"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</LinearLayout>
+        <Button
+            android:id="@+id/bt_sair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botao"
+            android:fontFamily="@font/red_rose"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="SAIR"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -7,17 +7,13 @@
     android:background="@color/cor_fundo_activitys" >
 
     <ImageView
-        android:layout_width="227dp"
-        android:layout_height="112dp"
-        android:paddingLeft="20dp"
-        android:paddingTop="30dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo_cabecalho" />
 </androidx.constraintlayout.widget.ConstraintLayout>
