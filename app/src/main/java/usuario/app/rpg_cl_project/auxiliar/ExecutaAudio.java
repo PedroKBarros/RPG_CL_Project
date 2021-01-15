@@ -70,7 +70,9 @@ public class ExecutaAudio {
         this.mediaPlayer.pause();
     }
 
-    public void liberaRecursos(){
+    public void paraExecucao()  {this.mediaPlayer.stop();}
+
+        public void liberaRecursos(){
         this.mediaPlayer.release();
     }
 
