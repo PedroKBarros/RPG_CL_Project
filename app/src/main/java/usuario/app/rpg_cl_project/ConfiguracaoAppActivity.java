@@ -2,18 +2,18 @@ package usuario.app.rpg_cl_project;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.DialogInterface;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import usuario.app.rpg_cl_project.auxiliar.ExecutaMensagem;
 import usuario.app.rpg_cl_project.database.ddl.DadosOpenHelper;
 import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbConfigApp;
 import usuario.app.rpg_cl_project.dominio.ConfiguracaoApp;
@@ -27,6 +27,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private RepositorioTbConfigApp repositorioTbConfigApp;
     private ConfiguracaoApp configuracaoApp;
     private Switch switchConfigSomBotoes;
+    private ExecutaMensagem executaMensagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +39,15 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         headerTitle.setText("CONFIGURAÇÕES");
         TextView txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
 
+        executaMensagem = new ExecutaMensagem(this);
+
         txtHelp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                AlertDialog.Builder helpAlert = new AlertDialog.Builder(ConfiguracaoAppActivity.this);
-                helpAlert.setMessage("Essa tela permite que você configure diversos parâmetros " +
-                        "do GRG I como quiser! Todas as configurações daqui são aplicadas " +
-                        "em todo o app.");
-                helpAlert.setTitle("A Ajuda Chegou! :)");
-                helpAlert.show();
+               executaMensagem.criaAlertDialogComTitulo("A Ajuda Chegou! :)", "Essa " +
+                               "tela permite que você configure diversos parâmetros do GRG I como quiser! " +
+                               "Todas as configurações daqui são aplicadas em todo o app.");
+               executaMensagem.mostraAlertDialog();
             }
         });
 
@@ -59,7 +60,9 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
 
                     activityAtual.runOnUiThread(new Runnable() {
                         public void run() {
-                            mostraMensagemToast("Conexão com BD estabelicidaaa!", Toast.LENGTH_SHORT);
+                            executaMensagem.criaToast("Conexão estabelecida com BD! :)",
+                                                        ExecutaMensagem.TOAST_DURACAO_CURTA);
+                            executaMensagem.mostraToast();
                         }
                     });
 
@@ -82,7 +85,8 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                     encerraRecursosBD();
                 }catch(SQLException e){
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
-                    mostraMensagemToast(e.getMessage(), Toast.LENGTH_SHORT);
+                    executaMensagem.criaToast(e.getMessage(), ExecutaMensagem.TOAST_DURACAO_CURTA);
+                    executaMensagem.mostraToast();
                 }finally {
                     encerraRecursosBD();
                 }
@@ -125,10 +129,5 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
 
     private void liberaRecursos(){
         encerraRecursosBD();
-    }
-
-    private void mostraMensagemToast(String mensagem, int duracao){
-        Toast toast = Toast.makeText(this, mensagem, duracao);
-        toast.show();
     }
 }
