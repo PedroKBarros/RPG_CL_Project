@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cor_fundo_activitys"
-    android:gravity="center_horizontal">
+    android:background="@color/cor_fundo_activitys">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
     <include layout="@layout/cabecalho_completo_telas_fora_jogo" />
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/cor_fundo_activitys"
-        tools:context=".ConfiguracaoAppActivity">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="20dp">
+            android:layout_height="wrap_content"
+            android:background="@color/cor_laranja_tematica"
+            android:fontFamily="@font/red_rose"
+            android:letterSpacing="0.2"
+            android:text="   GERAL:"
+            android:textAlignment="textStart"
+            android:textColor="@color/segunda_cor_texto"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
             <Switch
                 android:id="@+id/swt_som_botoes"
@@ -28,37 +29,13 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
-                android:switchMinWidth="60dp"
-                android:switchPadding="18dp"
-                android:text="SOM DOS BOTÕES:"
+                android:text="SOM DOS BOTÕES:  "
                 android:textAlignment="textEnd"
                 android:textColor="@color/segunda_cor_texto"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="412dp"
-                android:layout_height="wrap_content"
-                android:background="@color/cor_laranja_tematica"
-                android:fontFamily="@font/red_rose"
-                android:letterSpacing="0.2"
-                android:text="   GERAL:"
-                android:textAlignment="textStart"
-                android:textColor="@color/segunda_cor_texto"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </LinearLayout>
+</ScrollView>

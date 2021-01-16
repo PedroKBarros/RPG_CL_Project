@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,13 +34,11 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuracao_app);
 
         switchConfigSomBotoes = (Switch) findViewById(R.id.swt_som_botoes);
-        ConstraintLayout header = (ConstraintLayout) findViewById(
-                                                                R.id.complete_header_out_play);
-        TextView headerTitle = (TextView) header.getViewById(R.id.txt_titulo_cabecalho);
+        TextView headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
         headerTitle.setText("CONFIGURAÇÕES");
-        Button buttonHelp = (Button) header.getViewById(R.id.bt_ajuda_cabecalho);
+        TextView txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
 
-        buttonHelp.setOnClickListener(new View.OnClickListener(){
+        txtHelp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 AlertDialog.Builder helpAlert = new AlertDialog.Builder(ConfiguracaoAppActivity.this);
