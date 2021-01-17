@@ -27,6 +27,8 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private RepositorioTbConfigApp repositorioTbConfigApp;
     private ConfiguracaoApp configuracaoApp;
     private Switch switchConfigSomBotoes;
+    private TextView headerTitle;
+    private TextView txtHelp;
     private ExecutaMensagem executaMensagem;
 
     @Override
@@ -34,24 +36,13 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracao_app);
 
-        switchConfigSomBotoes = (Switch) findViewById(R.id.swt_som_botoes);
-        TextView headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
-        headerTitle.setText("CONFIGURAÇÕES");
-        TextView txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
+        this.inicializaAtributos();
 
-        executaMensagem = new ExecutaMensagem(this);
+        this.defineEventoCliqueTextViewHelp();
+        this.defineThreadBDApresentaConfigs();
+    }
 
-        txtHelp.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-               executaMensagem.criaAlertDialogComTitulo("A Ajuda Chegou! :)", "Essa " +
-                               "tela permite que você configure diversos parâmetros do GRG I como quiser! " +
-                               "Todas as configurações daqui são aplicadas em todo o app.");
-               executaMensagem.mostraAlertDialog();
-            }
-        });
-
-        activityAtual = this;
+    private void defineThreadBDApresentaConfigs(){
         new Thread(new Runnable() {
             public void run() {
                 try {
@@ -61,7 +52,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                     activityAtual.runOnUiThread(new Runnable() {
                         public void run() {
                             executaMensagem.criaToast("Conexão estabelecida com BD! :)",
-                                                        ExecutaMensagem.TOAST_DURACAO_CURTA);
+                                    ExecutaMensagem.TOAST_DURACAO_CURTA);
                             executaMensagem.mostraToast();
                         }
                     });
@@ -72,16 +63,16 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                     if (configuracaoGeral.getValor() == 0) {
                         activityAtual.runOnUiThread(new Runnable() {
                             public void run() {
-                                    switchConfigSomBotoes.setChecked(false);
-                                }
+                                switchConfigSomBotoes.setChecked(false);
+                            }
                         });
                     }else{
                         activityAtual.runOnUiThread(new Runnable() {
                             public void run() {
-                                    switchConfigSomBotoes.setChecked(true);
-                                }
+                                switchConfigSomBotoes.setChecked(true);
+                            }
                         });
-                        }
+                    }
                     encerraRecursosBD();
                 }catch(SQLException e){
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
@@ -92,7 +83,27 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
 
+    private void defineEventoCliqueTextViewHelp(){
+        txtHelp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                executaMensagem.criaAlertDialogComTitulo("A Ajuda Chegou! :)", "Essa " +
+                        "tela permite que você configure diversos parâmetros do GRG I como quiser! " +
+                        "Todas as configurações daqui são aplicadas em todo o app.");
+                executaMensagem.mostraAlertDialog();
+            }
+        });
+    }
+
+    private void inicializaAtributos(){
+        activityAtual = this;
+        switchConfigSomBotoes = (Switch) findViewById(R.id.swt_som_botoes);
+        headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
+        headerTitle.setText("CONFIGURAÇÕES");
+        txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
+        executaMensagem = new ExecutaMensagem(this);
     }
 
     @Override
