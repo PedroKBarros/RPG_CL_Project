@@ -31,7 +31,7 @@ public class RepositorioTbConfigApp {
         String chave;
         int valor, valorMin, valorMax;
 
-        Cursor cursor = conexao.rawQuery(ScriptDML.retornaConsultaTodasConfiguracoesGerais(), null); //Método para escrever consulta SQL, passando a String da consulta e parâmetros da consulta em um vetor de Strings
+        Cursor cursor = conexao.rawQuery(ScriptDML.retornaConsultaTodasConfiguracoesGeraisTbConfigApp(), null); //Método para escrever consulta SQL, passando a String da consulta e parâmetros da consulta em um vetor de Strings
         //Verificando se algum registro foi retornado:                         //O primeiro parâmetro é a quary e o outro são os argumentos. Porém, como não temos argumentos, pois não usamos a clausula where, coloquei como null.
         if (cursor.getCount() > 0){                                           //Ele retorna um objeto Cursor, que contém as tuplas de resultado. Vamos converter para List<Cliente>.
             //Garantindo q a gnt vai ter os resultados a
@@ -52,5 +52,26 @@ public class RepositorioTbConfigApp {
         }
 
         return configuracoesGerais;
+    }
+
+    public boolean retornaValorTuplaComoBoolean(int idTupla){
+        int valor;
+        String[] parametros = new String[1];
+        parametros[0] = Integer.toString(idTupla);
+        Cursor cursor = conexao.rawQuery(ScriptDML.retornaConsultaValorConfiguracaoEspecificaTbConfigApp(), parametros);
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            valor = cursor.getInt(cursor.getColumnIndex("valor"));
+            return (valor == 1) ? true : false;
+        }
+        return false;
+    }
+
+    public void alteraValorTupla(int idTupla, int valor){
+        String [] parametros = new String[1];
+        parametros[0] = Integer.toString(idTupla);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("valor", valor);
+        conexao.update("TB_CONFIG_APP", contentValues, "WHERE id = ?", parametros);
     }
 }
