@@ -13,6 +13,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import usuario.app.rpg_cl_project.auxiliar.ExecutaMensagem;
 import usuario.app.rpg_cl_project.database.ddl.DadosOpenHelper;
 import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbConfigApp;
@@ -30,6 +32,8 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private TextView headerTitle;
     private TextView txtHelp;
     private ExecutaMensagem executaMensagem;
+    private ArrayList valoresConfigOnCreate;
+    private ArrayList valoresConfigOnDestroy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,57 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
 
         this.inicializaAtributos();
 
-        this.defineEventoCliqueTextViewHelp();
         this.defineThreadBDApresentaConfigs();
+        this.defineEventoCliqueTextViewHelp();
+    }
+
+    private void armazenaValoresConfigOnCreate(){
+        valoresConfigOnCreate.add(switchConfigSomBotoes.isChecked());
+    }
+
+    private void armazenaValoresConfigOnDestroy(){
+        valoresConfigOnDestroy.add(switchConfigSomBotoes.isChecked());
+    }
+
+    private void defineThreadBDAtualizaValorConfigs(){
+       new Thread(new Runnable() {
+            public void run() {
+                try {
+                    boolean valorOnCreate, valorOnDestroy;
+
+                    valorOnCreate = (boolean) valoresConfigOnCreate.get(0);
+                    valorOnDestroy = (boolean) valoresConfigOnDestroy.get(0);
+                    if (valorOnCreate != valorOnDestroy){
+                        repositorioTbConfigApp.alteraValorTupla(1, valorOnDestroy == true ? 1 : 0);
+                    }
+
+                    liberaRecursos();
+
+                }catch(SQLException e){
+                    encerraRecursosBD();
+                    //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
+                    executaMensagem.criaAlertDialogComTitulo("Ops! :/",
+                            "Infelizmente algo deu errado. O aplicativo será encerrado.\n" +
+                                    "Se quiser relatar o problema, entre em contato através " +
+                                    "do e-mail: pedrokatsbarros@gmail.com");
+                    executaMensagem.addBotaoAlertDialog(ExecutaMensagem.ALERTDLG_TIPO_BOTAO_POSITIVO,
+                            "OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finishAffinity();
+                                }
+                            });
+                    executaMensagem.addEventoCancelAlertDialog(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialogInterface) {
+                            finishAffinity();
+                        }
+                    });
+                    executaMensagem.mostraAlertDialog();
+                }
+            }
+        }).start();
+
     }
 
     private void defineThreadBDApresentaConfigs(){
@@ -60,26 +113,40 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                     configuracaoApp = new ConfiguracaoApp();
                     configuracaoApp.setConfiguracoesGerais(repositorioTbConfigApp.buscarTodasTuplas());
                     ConfiguracaoGeral configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(0);
-                    if (configuracaoGeral.getValor() == 0) {
-                        activityAtual.runOnUiThread(new Runnable() {
-                            public void run() {
+                    activityAtual.runOnUiThread(new Runnable() {
+                        public void run() {
+                            if (configuracaoGeral.getValor() == 0) {
                                 switchConfigSomBotoes.setChecked(false);
-                            }
-                        });
-                    }else{
-                        activityAtual.runOnUiThread(new Runnable() {
-                            public void run() {
+                                armazenaValoresConfigOnCreate();
+                        }else{
                                 switchConfigSomBotoes.setChecked(true);
+                                armazenaValoresConfigOnCreate();
+
                             }
-                        });
-                    }
-                    encerraRecursosBD();
+                        }
+                    });
+
                 }catch(SQLException e){
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
-                    executaMensagem.criaToast(e.getMessage(), ExecutaMensagem.TOAST_DURACAO_CURTA);
-                    executaMensagem.mostraToast();
-                }finally {
                     encerraRecursosBD();
+                    executaMensagem.criaAlertDialogComTitulo("Ops! :/",
+                            "Infelizmente algo deu errado. O aplicativo será encerrado.\n" +
+                                    "Se quiser relatar o problema, entre em contato através " +
+                                    "do e-mail: pedrokatsbarros@gmail.com");
+                    executaMensagem.addBotaoAlertDialog(ExecutaMensagem.ALERTDLG_TIPO_BOTAO_POSITIVO,
+                            "OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finishAffinity();
+                                }
+                            });
+                    executaMensagem.addEventoCancelAlertDialog(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialogInterface) {
+                            finishAffinity();
+                        }
+                    });
+                    executaMensagem.mostraAlertDialog();
                 }
             }
         }).start();
@@ -104,13 +171,16 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         headerTitle.setText("CONFIGURAÇÕES");
         txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
         executaMensagem = new ExecutaMensagem(this);
+        valoresConfigOnCreate = new ArrayList();
+        valoresConfigOnDestroy = new ArrayList();
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-
-        liberaRecursos();
+        this.armazenaValoresConfigOnDestroy();
+        this.defineThreadBDAtualizaValorConfigs();
+        //liberaRecursos(); //Está dentro da thread acima (atualizaValorConfigs)
     }
 
     private void instanciaRepositorio(){

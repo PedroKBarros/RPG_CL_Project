@@ -3,6 +3,7 @@ package usuario.app.rpg_cl_project.database.dml.repositorios;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,10 +69,11 @@ public class RepositorioTbConfigApp {
     }
 
     public void alteraValorTupla(int idTupla, int valor){
-        String [] parametros = new String[1];
-        parametros[0] = Integer.toString(idTupla);
+        String where = "id = ?";
+        String [] argWhere = new String[1];
+        argWhere[0] = Integer.toString(idTupla);
         ContentValues contentValues = new ContentValues();
         contentValues.put("valor", valor);
-        conexao.update("TB_CONFIG_APP", contentValues, "WHERE id = ?", parametros);
+        conexao.update("TB_CONFIG_APP", contentValues, where, argWhere);
     }
 }
