@@ -50,7 +50,7 @@ public class MenuAcitivity extends AppCompatActivity {
         this.defineEventoClickBotaoSair();
     }
 
-    private void defineThreadBDConfigSomBotoes(){
+    private void defineThreadBDValorConfigs(){
         new Thread(new Runnable() {
             public void run() {
                 try {
@@ -140,7 +140,7 @@ public class MenuAcitivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         Log.i("CAA-MENU", "ON RESUME MENU");
-        this.defineThreadBDConfigSomBotoes();
+        this.defineThreadBDValorConfigs();
     }
 
     @Override
