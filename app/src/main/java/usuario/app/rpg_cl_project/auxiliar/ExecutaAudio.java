@@ -35,6 +35,23 @@ public class ExecutaAudio {
 
     }
 
+    public boolean executaAudioThreadUICondicional(String strUri, Boolean repetir, Boolean condicao) {
+        try {
+            if (!condicao)
+                return true;
+            Uri uri = Uri.parse(strUri);
+            this.mediaPlayer.reset();
+            this.mediaPlayer.setLooping(repetir);
+            this.mediaPlayer.setDataSource(this.contexto, uri);
+            this.mediaPlayer.prepare();
+            this.mediaPlayer.start();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+
+    }
+
     public boolean executaAudioAsync(String strUri, Boolean repetir)  {
         MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
             @Override
@@ -52,6 +69,40 @@ public class ExecutaAudio {
         };
 
         try {
+            Uri uri = Uri.parse(strUri);
+            this.mediaPlayer.reset();
+            this.mediaPlayer.setLooping(repetir);
+            this.mediaPlayer.setDataSource(this.contexto, uri);
+            this.mediaPlayer.setOnPreparedListener(preparedListener);
+            this.mediaPlayer.setOnErrorListener(errorListener);
+            this.mediaPlayer.prepareAsync();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+
+    }
+
+    public boolean executaAudioAsyncCondicional(String strUri, Boolean repetir, Boolean condicao)  {
+        try {
+            if (!condicao)
+                return true;
+
+            MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mediaPlayer) {
+                    mediaPlayer.start();
+                }
+            };
+
+            MediaPlayer.OnErrorListener errorListener = new MediaPlayer.OnErrorListener() {
+                @Override
+                public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+                    liberaRecursos();
+                    return false;
+                }
+            };
+
             Uri uri = Uri.parse(strUri);
             this.mediaPlayer.reset();
             this.mediaPlayer.setLooping(repetir);
