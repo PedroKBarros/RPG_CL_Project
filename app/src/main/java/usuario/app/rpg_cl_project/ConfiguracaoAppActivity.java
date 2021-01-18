@@ -33,7 +33,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private TextView txtHelp;
     private ExecutaMensagem executaMensagem;
     private ArrayList valoresConfigOnCreate;
-    private ArrayList valoresConfigOnDestroy;
+    private ArrayList valoresConfigOnPause;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,9 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuracao_app);
 
         this.inicializaAtributos();
+
+        this.estabeleceConexaoBD();
+        this.instanciaRepositorio();
 
         this.defineThreadBDApresentaConfigs();
         this.defineEventoCliqueTextViewHelp();
@@ -50,23 +53,21 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         valoresConfigOnCreate.add(switchConfigSomBotoes.isChecked());
     }
 
-    private void armazenaValoresConfigOnDestroy(){
-        valoresConfigOnDestroy.add(switchConfigSomBotoes.isChecked());
+    private void armazenaValoresConfigOnPause(){
+        valoresConfigOnPause.add(switchConfigSomBotoes.isChecked());
     }
 
     private void defineThreadBDAtualizaValorConfigs(){
        new Thread(new Runnable() {
             public void run() {
                 try {
-                    boolean valorOnCreate, valorOnDestroy;
+                    boolean valorOnCreate, valorOnPause;
 
                     valorOnCreate = (boolean) valoresConfigOnCreate.get(0);
-                    valorOnDestroy = (boolean) valoresConfigOnDestroy.get(0);
-                    if (valorOnCreate != valorOnDestroy){
-                        repositorioTbConfigApp.alteraValorTupla(1, valorOnDestroy == true ? 1 : 0);
+                    valorOnPause = (boolean) valoresConfigOnPause.get(0);
+                    if (valorOnCreate != valorOnPause){
+                        repositorioTbConfigApp.alteraValorTupla(1, valorOnPause == true ? 1 : 0);
                     }
-
-                    liberaRecursos();
 
                 }catch(SQLException e){
                     encerraRecursosBD();
@@ -99,10 +100,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    estabeleceConexaoBD();
-                    instanciaRepositorio();
-
-                    activityAtual.runOnUiThread(new Runnable() {
+                       activityAtual.runOnUiThread(new Runnable() {
                         public void run() {
                             executaMensagem.criaToast("Conexão estabelecida com BD! :)",
                                     ExecutaMensagem.TOAST_DURACAO_CURTA);
@@ -117,12 +115,10 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                         public void run() {
                             if (configuracaoGeral.getValor() == 0) {
                                 switchConfigSomBotoes.setChecked(false);
-                                armazenaValoresConfigOnCreate();
                         }else{
                                 switchConfigSomBotoes.setChecked(true);
-                                armazenaValoresConfigOnCreate();
-
                             }
+                            armazenaValoresConfigOnCreate();
                         }
                     });
 
@@ -172,15 +168,21 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
         executaMensagem = new ExecutaMensagem(this);
         valoresConfigOnCreate = new ArrayList();
-        valoresConfigOnDestroy = new ArrayList();
+        valoresConfigOnPause = new ArrayList();
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        this.armazenaValoresConfigOnDestroy();
+
+        this.liberaRecursos();
+    }
+
+    protected  void onPause(){
+        super.onPause();
+
+        this.armazenaValoresConfigOnPause();
         this.defineThreadBDAtualizaValorConfigs();
-        //liberaRecursos(); //Está dentro da thread acima (atualizaValorConfigs)
     }
 
     private void instanciaRepositorio(){
