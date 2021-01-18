@@ -31,6 +31,7 @@ public class MenuAcitivity extends AppCompatActivity {
     private ExecutaAudio execMusicaFundo;
     private ExecutaMensagem execMensagem;
     private boolean temSomBotoes;
+    private boolean temSomMusicas;
     private SQLiteDatabase conexao;
     private DadosOpenHelper dadosOpenHelper;
     private RepositorioTbConfigApp repositorioTbConfigApp;
@@ -61,6 +62,10 @@ public class MenuAcitivity extends AppCompatActivity {
                         }
                     });
                     temSomBotoes = repositorioTbConfigApp.retornaValorTuplaComoBoolean(1);
+                    temSomMusicas = repositorioTbConfigApp.retornaValorTuplaComoBoolean(2);
+
+                    execMusicaFundo.executaAudioAsyncCondicional("android.resource://usuario.app.rpg_cl_project/raw/menu_music",
+                            true, temSomMusicas);
                 }catch(SQLException e){
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
                     encerraRecursosBD();
@@ -134,9 +139,8 @@ public class MenuAcitivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-
+        Log.i("CAA-MENU", "ON RESUME MENU");
         this.defineThreadBDConfigSomBotoes();
-        execMusicaFundo.executaAudioAsync("android.resource://usuario.app.rpg_cl_project/raw/menu_music", true);
     }
 
     @Override

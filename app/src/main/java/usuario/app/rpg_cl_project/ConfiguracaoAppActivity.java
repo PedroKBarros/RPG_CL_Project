@@ -29,6 +29,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private RepositorioTbConfigApp repositorioTbConfigApp;
     private ConfiguracaoApp configuracaoApp;
     private Switch switchConfigSomBotoes;
+    private Switch switchConfigSomMusicas;
     private TextView headerTitle;
     private TextView txtHelp;
     private ExecutaMensagem executaMensagem;
@@ -51,10 +52,15 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
 
     private void armazenaValoresConfigOnCreate(){
         valoresConfigOnCreate.add(switchConfigSomBotoes.isChecked());
+        valoresConfigOnCreate.add(switchConfigSomMusicas.isChecked());
+        Log.i("CAA", "VALOR ON CREATE = " + switchConfigSomMusicas.isChecked());
     }
 
     private void armazenaValoresConfigOnPause(){
         valoresConfigOnPause.add(switchConfigSomBotoes.isChecked());
+        valoresConfigOnPause.add(switchConfigSomMusicas.isChecked());
+
+        Log.i("CAA", "VALOR ON PAUSE = " + switchConfigSomMusicas.isChecked());
     }
 
     private void defineThreadBDAtualizaValorConfigs(){
@@ -63,12 +69,21 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                 try {
                     boolean valorOnCreate, valorOnPause;
 
+                    //SOM BOTOES:
                     valorOnCreate = (boolean) valoresConfigOnCreate.get(0);
                     valorOnPause = (boolean) valoresConfigOnPause.get(0);
                     if (valorOnCreate != valorOnPause){
                         repositorioTbConfigApp.alteraValorTupla(1, valorOnPause == true ? 1 : 0);
                     }
 
+                    //SOM MUSICAS:
+                    valorOnCreate = (boolean) valoresConfigOnCreate.get(1);
+                    valorOnPause = (boolean) valoresConfigOnPause.get(1);
+                    if (valorOnCreate != valorOnPause){
+                        Log.i("CAA", "VALOR ON CREATE != VALOR ON PAUSE");
+                        repositorioTbConfigApp.alteraValorTupla(2, valorOnPause == true ? 1 : 0);
+                    }
+                    Log.i("CAA", "ACABOU DE ATUALIZAR NO BD");
                 }catch(SQLException e){
                     encerraRecursosBD();
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite
@@ -110,14 +125,25 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
 
                     configuracaoApp = new ConfiguracaoApp();
                     configuracaoApp.setConfiguracoesGerais(repositorioTbConfigApp.buscarTodasTuplas());
-                    ConfiguracaoGeral configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(0);
                     activityAtual.runOnUiThread(new Runnable() {
                         public void run() {
+                            //SOM BOTOES:
+                            ConfiguracaoGeral configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(0);
                             if (configuracaoGeral.getValor() == 0) {
                                 switchConfigSomBotoes.setChecked(false);
                         }else{
                                 switchConfigSomBotoes.setChecked(true);
                             }
+
+                            //SOM MUSICAS:
+                            configuracaoGeral = configuracaoApp.getConfiguracoesGerais().get(1);
+                            if (configuracaoGeral.getValor() == 0) {
+                                switchConfigSomMusicas.setChecked(false);
+                            }else{
+                                switchConfigSomMusicas.setChecked(true);
+                            }
+
+                            //Armazenando valores das configuracoes ao se inicar a activity
                             armazenaValoresConfigOnCreate();
                         }
                     });
@@ -163,6 +189,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private void inicializaAtributos(){
         activityAtual = this;
         switchConfigSomBotoes = (Switch) findViewById(R.id.swt_som_botoes);
+        switchConfigSomMusicas = (Switch) findViewById(R.id.swt_som_musica);
         headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
         headerTitle.setText("CONFIGURAÇÕES");
         txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);

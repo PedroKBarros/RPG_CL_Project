@@ -14,6 +14,13 @@ public class ScriptDML {
         return sql.toString();
     }
 
+    public static String retornaInsercaoConfigSomMusicasTuplaTbConfigApp(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CONFIG_APP(chave, valor_min, valor_max, valor) VALUES('som_musicas', 0, 1, 1)");
+
+        return sql.toString();
+    }
+
     public static String retornaConsultaValorConfiguracaoEspecificaTbConfigApp(){
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT valor FROM TB_CONFIG_APP ");

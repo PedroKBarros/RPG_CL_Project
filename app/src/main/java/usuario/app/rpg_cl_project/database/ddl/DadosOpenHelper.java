@@ -46,6 +46,7 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         //Inserção de dados prévios:
         //  TB_CONFIG_APP:
         db.execSQL(ScriptDML.retornaInsercaoConfigSomBotoesTuplaTbConfigApp());
+        db.execSQL(ScriptDML.retornaInsercaoConfigSomMusicasTuplaTbConfigApp());
 
     }
 

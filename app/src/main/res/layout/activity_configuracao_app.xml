@@ -17,7 +17,7 @@
             android:background="@color/cor_laranja_tematica"
             android:fontFamily="@font/red_rose"
             android:letterSpacing="0.2"
-            android:text="   GERAL:"
+            android:text="   ÁUDIO:"
             android:textAlignment="textStart"
             android:textColor="@color/segunda_cor_texto"
             android:textSize="15sp"
@@ -32,10 +32,24 @@
                 android:layout_marginLeft="15dp"
                 android:fontFamily="@font/red_rose"
                 android:letterSpacing="0.2"
-                android:text="SOM DOS BOTÕES:  "
+                android:text="CLIQUE DOS BOTÕES:  "
                 android:textAlignment="textEnd"
                 android:textColor="@color/segunda_cor_texto"
                 android:textSize="13sp" />
+
+        <Switch
+            android:id="@+id/swt_som_musica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/red_rose"
+            android:letterSpacing="0.2"
+            android:text="MÚSICAS:  "
+            android:textAlignment="textEnd"
+            android:textColor="@color/segunda_cor_texto"
+            android:textSize="13sp" />
 
 </LinearLayout>
 </ScrollView>
