@@ -53,14 +53,11 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
     private void armazenaValoresConfigOnCreate(){
         valoresConfigOnCreate.add(switchConfigSomBotoes.isChecked());
         valoresConfigOnCreate.add(switchConfigSomMusicas.isChecked());
-        Log.i("CAA", "VALOR ON CREATE = " + switchConfigSomMusicas.isChecked());
     }
 
     private void armazenaValoresConfigOnPause(){
         valoresConfigOnPause.add(switchConfigSomBotoes.isChecked());
         valoresConfigOnPause.add(switchConfigSomMusicas.isChecked());
-
-        Log.i("CAA", "VALOR ON PAUSE = " + switchConfigSomMusicas.isChecked());
     }
 
     private void defineThreadBDAtualizaValorConfigs(){
@@ -80,10 +77,8 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
                     valorOnCreate = (boolean) valoresConfigOnCreate.get(1);
                     valorOnPause = (boolean) valoresConfigOnPause.get(1);
                     if (valorOnCreate != valorOnPause){
-                        Log.i("CAA", "VALOR ON CREATE != VALOR ON PAUSE");
                         repositorioTbConfigApp.alteraValorTupla(2, valorOnPause == true ? 1 : 0);
                     }
-                    Log.i("CAA", "ACABOU DE ATUALIZAR NO BD");
                 }catch(SQLException e){
                     encerraRecursosBD();
                     //Há dois SQLException e temos q usar o android.database, pois é o q pertence ao pacote do SQLite

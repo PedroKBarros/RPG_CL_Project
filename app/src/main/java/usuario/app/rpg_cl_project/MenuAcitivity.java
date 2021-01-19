@@ -139,7 +139,7 @@ public class MenuAcitivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        Log.i("CAA-MENU", "ON RESUME MENU");
+
         this.defineThreadBDValorConfigs();
     }
 
