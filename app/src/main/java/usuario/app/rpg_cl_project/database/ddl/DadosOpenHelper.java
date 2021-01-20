@@ -48,6 +48,16 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ScriptDML.retornaInsercaoConfigSomBotoesTuplaTbConfigApp());
         db.execSQL(ScriptDML.retornaInsercaoConfigSomMusicasTuplaTbConfigApp());
 
+        //  TB_CATEGORIA_TIPO:
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaSaudeTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaAgressividadeTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaAgilidadeTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaVisaoTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaPassadaTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaFormaFisicaTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaForcaTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoriaExperienciaTbCategoriaTipo());
+
     }
 
     @Override

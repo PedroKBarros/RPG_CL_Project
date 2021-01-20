@@ -21,6 +21,62 @@ public class ScriptDML {
         return sql.toString();
     }
 
+    public static String retornaInsercaoCategoriaSaudeTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Saúde')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaAgressividadeTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Agressividade')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaAgilidadeTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Agilidade')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaVisaoTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Visão')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaPassadaTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Passada')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaFormaFisicaTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Forma Física')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaForcaTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Força')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCategoriaExperienciaTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Experiência')");
+
+        return sql.toString();
+    }
+
     public static String retornaConsultaValorConfiguracaoEspecificaTbConfigApp(){
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT valor FROM TB_CONFIG_APP ");
