@@ -27,6 +27,7 @@ public class MenuAcitivity extends AppCompatActivity {
     MenuAcitivity activityAtual;
     private Button botaoConfig;
     private Button botaoSair;
+    private Button botaoSobre;
     private ExecutaAudio execSomCliqueBotoes;
     private ExecutaAudio execMusicaFundo;
     private ExecutaMensagem execMensagem;
@@ -48,6 +49,7 @@ public class MenuAcitivity extends AppCompatActivity {
 
         this.defineEventoClickBotaoConfig();
         this.defineEventoClickBotaoSair();
+        this.defineEventoClickBotaoSobre();
     }
 
     private void defineThreadBDValorConfigs(){
@@ -127,10 +129,23 @@ public class MenuAcitivity extends AppCompatActivity {
         });
     }
 
+    private void defineEventoClickBotaoSobre(){
+        botaoSobre.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                execMusicaFundo.paraExecucao();
+                execSomCliqueBotoes.executaAudioThreadUICondicional(ExecutaAudio.URI_SOM_CLIQUE_BOTAO, false, temSomBotoes);
+                Intent intent = new Intent(getBaseContext(), SobreActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void inicializaAtributos(){
         activityAtual = this;
         botaoConfig = (Button) findViewById(R.id.bt_config);
         botaoSair = (Button) findViewById(R.id.bt_sair);
+        botaoSobre = (Button) findViewById(R.id.bt_sobre);
         execSomCliqueBotoes = new ExecutaAudio(this);
         execMusicaFundo = new ExecutaAudio(this);
         execMensagem = new ExecutaMensagem(this);
