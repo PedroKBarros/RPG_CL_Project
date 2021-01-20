@@ -5,10 +5,8 @@ public class ScriptDDL {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_PERSONAGEM_JOG(nome VARCHAR(30) NOT NULL, ");
         sql.append("tot_objs_alcancados INT NOT NULL DEFAULT 0, ");
-        sql.append("eh_auto INT NOT NULL DEFAULT 0, ");
         sql.append("CONSTRAINT pk_tb_personagem_jog PRIMARY KEY(nome), ");
-        sql.append("CONSTRAINT ch_tb_personagem_jog_tot_objs_alcancados CHECK(tot_objs_alcancados >= 0), ");
-        sql.append("CONSTRAINT ch_tb_personagem_jog_eh_auto CHECK(eh_auto = 0 OR eh_auto = 1))");
+        sql.append("CONSTRAINT ch_tb_personagem_jog_tot_objs_alcancados CHECK(tot_objs_alcancados >= 0))");
 
         return sql.toString();
     }
@@ -114,12 +112,10 @@ public class ScriptDDL {
     public static String getCreateTableTbConfig(){
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_CONFIG(nome_jogo VARCHAR(40) NOT NULL, ");
-        sql.append("tocar_musica INT NOT NULL DEFAULT 1, ");
         sql.append("qtd_trechos_personagem INT NOT NULL DEFAULT 3, ");
         sql.append("qtd_jogadores INT NOT NULL DEFAULT 1, ");
         sql.append("CONSTRAINT pk_tb_config PRIMARY KEY(nome_jogo), ");
         sql.append("CONSTRAINT fk_tb_config_tb_jogo FOREIGN KEY(nome_jogo) REFERENCES tb_jogo(nome), ");
-        sql.append("CONSTRAINT ch_tb_config_tocar_musica CHECK(tocar_musica = 0 OR tocar_musica = 1), ");
         sql.append("CONSTRAINT ch_tb_config_qtd_trechos_personagem ");
         sql.append("CHECK(qtd_trechos_personagem >= 1 AND qtd_trechos_personagem <= 10), ");
         sql.append("CONSTRAINT ch_tb_config_qtd_jogadores ");
@@ -128,17 +124,19 @@ public class ScriptDDL {
         return sql.toString();
     }
 
-    public static String getCreateTableTbOrdemJogo(){
+    public static String getCreateTableTbConfigPersonagemJogo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("CREATE TABLE IF NOT EXISTS TB_ORDEM_JOGO(nome_jogo VARCHAR(40) NOT NULL, ");
+        sql.append("CREATE TABLE IF NOT EXISTS TB_CONFIG_PERSONAGEM_JOGO(nome_jogo VARCHAR(40) NOT NULL, ");
         sql.append("nome_personagem VARCHAR(30) NOT NULL, ");
         sql.append("ordem INT NOT NULL, ");
-        sql.append("CONSTRAINT pk_ordem_jogo PRIMARY KEY(nome_jogo, nome_personagem), ");
-        sql.append("CONSTRAINT fk_tb_ordem_jogo_tb_jogo FOREIGN KEY(nome_jogo) ");
+        sql.append("eh_auto INT NOT NULL, ");
+        sql.append("CONSTRAINT pk_config_personagem_jogo PRIMARY KEY(nome_jogo, nome_personagem), ");
+        sql.append("CONSTRAINT fk_tb_config_personagem_jogo_tb_jogo FOREIGN KEY(nome_jogo) ");
         sql.append("REFERENCES tb_jogo(nome), ");
-        sql.append("CONSTRAINT fk_tb_ordem_jogo_tb_personagem_jog FOREIGN KEY(nome_personagem) ");
+        sql.append("CONSTRAINT fk_tb_config_personagem_jogo_tb_personagem_jog FOREIGN KEY(nome_personagem) ");
         sql.append("REFERENCES tb_personagem_jog(nome), ");
-        sql.append("CONSTRAINT ch_tb_ordem_jogo_ordem CHECK(ordem >= 1))");
+        sql.append("CONSTRAINT ch_tb_config_personagem_jogo_ordem CHECK(ordem >= 1), ");
+        sql.append("CONSTRAINT ch_tb_config_personagem_jogo_eh_auto CHECK(eh_auto == 0 OR eh_auto == 1))");
 
         return sql.toString();
     }

@@ -34,7 +34,7 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ScriptDDL.getCreateTableTbAbertura());
         db.execSQL(ScriptDDL.getCreateTableTbJogo());
         db.execSQL(ScriptDDL.getCreateTableTbConfig());
-        db.execSQL(ScriptDDL.getCreateTableTbOrdemJogo());
+        db.execSQL(ScriptDDL.getCreateTableTbConfigPersonagemJogo());
         db.execSQL(ScriptDDL.getCreateTableTbTrecho());
         db.execSQL(ScriptDDL.getCreateTableTbEvento());
         db.execSQL(ScriptDDL.getCreateTableTbAcao());
