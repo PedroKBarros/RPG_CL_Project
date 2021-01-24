@@ -23,56 +23,64 @@ public class ScriptDML {
 
     public static String retornaInsercaoCategoriaSaudeTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Saúde')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Saúde', ");
+        sql.append("'Influencia em: COMBATES e MOVIMENTAÇÕES')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaAgressividadeTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Agressividade')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Agressividade', ");
+        sql.append("'Influencia em: COMBATES e CAPACIDADE DE SE IMPOR')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaAgilidadeTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Agilidade')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome,  descricao) VALUES('Agilidade', ");
+        sql.append("'Influencia em: MOVIMENTAÇÃO, COMABATE e FUGAS')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaVisaoTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Visão')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Visão', ");
+        sql.append("'Influencia em: CAPACIDADE DE VIZUALIZAÇÃO DE OBJETOS DOS CENÁRIOS')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaPassadaTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Passada')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Passada', ");
+        sql.append("'Influencia em: CAPACIDADE DE NÃO SER PERCEBIDO')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaFormaFisicaTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Forma Física')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Forma Física', ");
+        sql.append("'Influencia em: INTIMIDAÇÃO DE INIMIGOS e ACESSO A PARTES DOS CENÁRIOS')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaForcaTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Força')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Força', ");
+        sql.append("'Influencia em: COMBATES e DEMAIS SITUAÇÕES EM QUE SE PRECISE EXERCER FORÇA SOBRE ALGO')");
 
         return sql.toString();
     }
 
     public static String retornaInsercaoCategoriaExperienciaTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome) VALUES('Experiência')");
+        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Experiência', ");
+        sql.append("'Influencia em: OPÇÕES DE AÇÕES DISPONÍVEIS')");
 
         return sql.toString();
     }

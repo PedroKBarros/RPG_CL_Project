@@ -14,6 +14,7 @@ public class ScriptDDL {
     public static String getCreateTableTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_CATEGORIA_TIPO(nome VARCHAR(20) NOT NULL, ");
+        sql.append("descricao VARCHAR(200) NOT NULL, ");
         sql.append("CONSTRAINT pk_tb_categoria_tipo PRIMARY KEY(nome))");
 
         return sql.toString();
