@@ -77,14 +77,6 @@ public class ScriptDML {
         return sql.toString();
     }
 
-    public static String retornaInsercaoCategoriaExperienciaTbCategoriaTipo(){
-        StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO TB_CATEGORIA_TIPO(nome, descricao) VALUES('Experiência', ");
-        sql.append("'Influencia em: OPÇÕES DE AÇÕES DISPONÍVEIS')");
-
-        return sql.toString();
-    }
-
     public static String retornaConsultaValorConfiguracaoEspecificaTbConfigApp(){
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT valor FROM TB_CONFIG_APP ");

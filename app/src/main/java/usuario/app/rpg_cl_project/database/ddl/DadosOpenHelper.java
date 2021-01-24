@@ -56,7 +56,6 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ScriptDML.retornaInsercaoCategoriaPassadaTbCategoriaTipo());
         db.execSQL(ScriptDML.retornaInsercaoCategoriaFormaFisicaTbCategoriaTipo());
         db.execSQL(ScriptDML.retornaInsercaoCategoriaForcaTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaExperienciaTbCategoriaTipo());
 
     }
 
