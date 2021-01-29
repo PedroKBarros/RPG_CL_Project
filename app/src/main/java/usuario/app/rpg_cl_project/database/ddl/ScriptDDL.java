@@ -43,7 +43,7 @@ public class ScriptDDL {
         sql.append("nivel INT NOT NULL, ");
         sql.append("descricao VARCHAR(100) NOT NULL, ");
         sql.append("nome_categoria_tipo VARCHAR(20) NOT NULL, ");
-        sql.append("CONSTRAINT pk_tb_tipo_caract PRIMARY KEY(nome), ");
+        sql.append("CONSTRAINT pk_tb_tipo_caract PRIMARY KEY(nome, nome_categoria_tipo), ");
         sql.append("CONSTRAINT fk_tb_tipo_caract_tb_categoria_tipo FOREIGN KEY(nome_categoria_tipo) ");
         sql.append("REFERENCES TB_CATEGORIA_TIPO(nome), ");
         sql.append("CONSTRAINT ch_tb_tipo_caract_nivel CHECK(nivel = 10 OR nivel = 8 OR nivel = 6 ");
