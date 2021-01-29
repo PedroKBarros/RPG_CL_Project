@@ -49,13 +49,56 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ScriptDML.retornaInsercaoConfigSomMusicasTuplaTbConfigApp());
 
         //  TB_CATEGORIA_TIPO:
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaSaudeTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaAgressividadeTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaAgilidadeTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaVisaoTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaPassadaTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaFormaFisicaTbCategoriaTipo());
-        db.execSQL(ScriptDML.retornaInsercaoCategoriaForcaTbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria0TbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria1TbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria2TbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria3TbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria4TbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria5TbCategoriaTipo());
+        db.execSQL(ScriptDML.retornaInsercaoCategoria6TbCategoriaTipo());
+
+        //  TB_TIPO_CARACT:
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria0TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria0TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria0TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria0TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria0TbTipoCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria1TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria1TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria1TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria1TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria1TbTipoCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria2TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria2TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria2TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria2TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria2TbTipoCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria3TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria3TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria3TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria3TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria3TbTipoCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria4TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria4TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria4TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria4TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria4TbTipoCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria5TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria5TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria5TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria5TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria5TbTipoCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaract0Categoria6TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract1Categoria6TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract2Categoria6TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria6TbTipoCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria6TbTipoCaract());
 
     }
 
