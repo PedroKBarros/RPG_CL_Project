@@ -38,6 +38,20 @@
                 android:textSize="13sp" />
 
         <Switch
+            android:id="@+id/swt_som_aventuras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/red_rose"
+            android:letterSpacing="0.2"
+            android:text="SOM DAS AVENTURAS:  "
+            android:textAlignment="textEnd"
+            android:textColor="@color/segunda_cor_texto"
+            android:textSize="13sp" />
+
+        <Switch
             android:id="@+id/swt_som_musica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
