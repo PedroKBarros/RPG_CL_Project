@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
+            android:name=".NovoPersonagemActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".SobreActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ConfiguracaoAppActivity"
             android:configChanges="orientation"
