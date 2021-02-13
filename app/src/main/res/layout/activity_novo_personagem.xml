@@ -10,12 +10,75 @@
 
         <include
             android:id="@+id/include"
-            layout="@layout/cabecalho_simples" />
+            layout="@layout/cabecalho_completo_telas_fora_jogo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="16sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="NOME:" />
+
+        <EditText
+            android:id="@+id/edt_nome_pers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/edit_text"
+            android:inputType="text"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="16sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="CARACTERÍSTICAS:" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="SAÚDE:" />
+
+        <ImageView
+            android:id="@+id/img_valor_saude"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/Caracteristica_Valor10"
+            android:layout_gravity="center_horizontal" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spn_caract_saude"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto" />
 
 
 
