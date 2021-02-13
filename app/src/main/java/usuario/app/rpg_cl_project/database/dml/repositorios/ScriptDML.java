@@ -911,4 +911,22 @@ public class ScriptDML {
 
         return sql.toString();
     }
+
+    public static String retornaConsultaCaractsCategoriaTbTipoCaractTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT * FROM TB_TIPO_CARACT, TB_CATEGORIA_TIPO ");
+        sql.append("WHERE ");
+        sql.append("TB_CATEGORIA_TIPO.nome = ?");
+
+        return sql.toString();
+    }
+
+    public static String retornaConsultaCategoriaTbCategoriaTipo(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT * FROM TB_CATEGORIA_TIPO ");
+        sql.append("WHERE ");
+        sql.append("TB_CATEGORIA_TIPO.nome = ?");
+
+        return sql.toString();
+    }
 }
