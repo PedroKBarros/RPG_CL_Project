@@ -20,6 +20,7 @@ public class SobreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sobre);
 
         this.inicializaAtributos();
+        this.configuraTituloCabecalho();
 
         this.formataTexto();
         this.apresentaTexto();
@@ -137,10 +138,13 @@ public class SobreActivity extends AppCompatActivity {
         this.txtSobre.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
+    private void configuraTituloCabecalho(){
+        this.headerTitle.setText("SOBRE");
+    }
+
     private void inicializaAtributos(){
         this.txtSobre = (TextView) findViewById(R.id.txt_sobre);
         headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
-        headerTitle.setText("SOBRE");
         this.formatador = new Formatador("MOTIVAÇÃO E HISTÓRIA\n" +
                         "\n" +
                         "GRG I é um jogo inspirado em RPGs por linha de comando e desenvolvido por " +

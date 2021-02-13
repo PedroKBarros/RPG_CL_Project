@@ -43,6 +43,7 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuracao_app);
 
         this.inicializaAtributos();
+        this.configuraTituloCabecalho();
 
         this.estabeleceConexaoBD();
         this.instanciaRepositorio();
@@ -199,13 +200,16 @@ public class ConfiguracaoAppActivity extends AppCompatActivity {
         });
     }
 
+    private void configuraTituloCabecalho(){
+        this.headerTitle.setText("CONFIGURAÇÕES");
+    }
+
     private void inicializaAtributos(){
         activityAtual = this;
         switchConfigSomBotoes = (Switch) findViewById(R.id.swt_som_botoes);
         switchConfigSomMusicas = (Switch) findViewById(R.id.swt_som_musica);
         switchConfigSomAventuras = (Switch) findViewById(R.id.swt_som_aventuras);
         headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
-        headerTitle.setText("CONFIGURAÇÕES");
         txtHelp = (TextView) findViewById(R.id.txt_ajuda_cabecalho);
         executaMensagem = new ExecutaMensagem(this);
         valoresConfigOnCreate = new ArrayList();
