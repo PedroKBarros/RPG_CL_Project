@@ -28,6 +28,7 @@ public class MenuAcitivity extends AppCompatActivity {
     private Button botaoConfig;
     private Button botaoSair;
     private Button botaoSobre;
+    private Button botaoNovoPersonagem;
     private ExecutaAudio execSomCliqueBotoes;
     private ExecutaAudio execMusicaFundo;
     private ExecutaMensagem execMensagem;
@@ -50,6 +51,7 @@ public class MenuAcitivity extends AppCompatActivity {
         this.defineEventoClickBotaoConfig();
         this.defineEventoClickBotaoSair();
         this.defineEventoClickBotaoSobre();
+        this.defineEventoClickBotaoNovoPersonagem();
     }
 
     private void defineThreadBDValorConfigs(){
@@ -141,11 +143,25 @@ public class MenuAcitivity extends AppCompatActivity {
         });
     }
 
+    private void defineEventoClickBotaoNovoPersonagem(){
+        botaoNovoPersonagem.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                execMusicaFundo.paraExecucao();
+                execSomCliqueBotoes.executaAudioThreadUICondicional(ExecutaAudio.URI_SOM_CLIQUE_BOTAO, false, temSomBotoes);
+                Intent intent = new Intent(getBaseContext(), NovoPersonagemActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
     private void inicializaAtributos(){
         activityAtual = this;
         botaoConfig = (Button) findViewById(R.id.bt_config);
         botaoSair = (Button) findViewById(R.id.bt_sair);
         botaoSobre = (Button) findViewById(R.id.bt_sobre);
+        botaoNovoPersonagem = (Button) findViewById(R.id.bt_novo_personagem);
         execSomCliqueBotoes = new ExecutaAudio(this);
         execMusicaFundo = new ExecutaAudio(this);
         execMensagem = new ExecutaMensagem(this);
