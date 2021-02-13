@@ -61,12 +61,12 @@
             android:textColor="@color/segunda_cor_texto"
             android:text="SAÚDE:" />
 
-        <ImageView
+       <ImageView
             android:id="@+id/img_valor_saude"
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/Caracteristica_Valor10"
+            android:src="@drawable/caracteristica_valor10"
             android:layout_gravity="center_horizontal" />
 
         <Spinner
