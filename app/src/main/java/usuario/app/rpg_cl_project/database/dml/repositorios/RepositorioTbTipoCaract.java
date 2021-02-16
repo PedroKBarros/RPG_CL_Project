@@ -2,6 +2,7 @@ package usuario.app.rpg_cl_project.database.dml.repositorios;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +43,34 @@ public class RepositorioTbTipoCaract {
                 nome = cursor.getString(cursor.getColumnIndex(NOME_TABELA + ".nome"));
                 nivel = cursor.getInt(cursor.getColumnIndex("nivel"));
                 descricao = cursor.getString(cursor.getColumnIndex("descricao"));
-                Caracteristica caracteristica = new Caracteristica(categoria, nome, nivel, descricao);
 
-                caracteristicas.add(caracteristica);
+                caracteristicas.add(new Caracteristica(categoria, nome, nivel, descricao));
             }while(cursor.moveToNext());
         }
         return caracteristicas;
+    }
+
+    public List<String> buscaNomeCaractsPorCategoria(String nomeCategoria){
+        String nome;
+        String[] parametros;
+        List<String> nomesCaracts = new ArrayList<String>();
+
+        parametros = new String[1];
+        parametros[0] = nomeCategoria;
+        Cursor cursor = conexao.rawQuery(
+                ScriptDML.retornaConsultaCaractsCategoriaTbTipoCaractTbCategoriaTipo(), parametros);
+        Log.i("RTTC", "CHEGOU0!");
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do{
+                Log.i("RTTC", "CHEGOU!");
+                nome = cursor.getString(cursor.getColumnIndex(NOME_TABELA + ".nome"));
+                Log.i("RTTC", NOME_TABELA + ".nome");
+
+                nomesCaracts.add(nome);
+            }while(cursor.moveToNext());
+        }
+        return nomesCaracts;
     }
 
 }

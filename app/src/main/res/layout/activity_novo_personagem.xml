@@ -49,6 +49,8 @@
             android:textColor="@color/segunda_cor_texto"
             android:text="CARACTERÍSTICAS:" />
 
+        <!--Views Saúde:-->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,17 +92,351 @@
             android:textColor="@color/segunda_cor_texto"
             android:text="DETALHES:" />
 
-        <EditText
-            android:id="@+id/edt_detalhes_caract_saude"
+        <TextView
+            android:id="@+id/txt_detalhes_caract_saude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/campo_somente_leitura"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2" />
+
+        <!--Views Agressividade:-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="AGRESSIVIDADE:" />
+
+        <ImageView
+            android:id="@+id/img_valor_agressividade"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caracteristica_valor10"
+            android:layout_gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/spn_caract_agressividade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/campo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="DETALHES:" />
+
+        <TextView
+            android:id="@+id/txt_detalhes_caract_agressividade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:background="@drawable/campo_somente_leitura"
-            android:inputType="text"
             android:fontFamily="@font/red_rose"
             android:textSize="15sp"
             android:letterSpacing="0.2" />
+
+        <!--Views Agilidade:-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="AGILIDADE:" />
+
+        <ImageView
+            android:id="@+id/img_valor_agilidade"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caracteristica_valor10"
+            android:layout_gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/spn_caract_agilidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/campo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="DETALHES:" />
+
+        <TextView
+            android:id="@+id/txt_detalhes_caract_agilidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/campo_somente_leitura"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2" />
+
+        <!--Views Visão:-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="VISÃO:" />
+
+        <ImageView
+            android:id="@+id/img_valor_visao"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caracteristica_valor10"
+            android:layout_gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/spn_caract_visao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/campo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="DETALHES:" />
+
+        <TextView
+            android:id="@+id/txt_detalhes_caract_visao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/campo_somente_leitura"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2" />
+
+
+        <!--Views Passada:-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="PASSADA:" />
+
+        <ImageView
+            android:id="@+id/img_valor_passada"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caracteristica_valor10"
+            android:layout_gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/spn_caract_passada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/campo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="DETALHES:" />
+
+        <TextView
+            android:id="@+id/txt_detalhes_caract_passada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/campo_somente_leitura"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2" />
+
+
+        <!--Views Forma Física:-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="FORMA FÍSICA:" />
+
+        <ImageView
+            android:id="@+id/img_valor_forma_fisica"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caracteristica_valor10"
+            android:layout_gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/spn_caract_forma_fisica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/campo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="DETALHES:" />
+
+        <TextView
+            android:id="@+id/txt_detalhes_caract_forma_fisica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/campo_somente_leitura"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2" />
+
+
+        <!--Views Força:-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="FORÇA:" />
+
+        <ImageView
+            android:id="@+id/img_valor_forca"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/caracteristica_valor10"
+            android:layout_gravity="center_horizontal" />
+
+        <Spinner
+            android:id="@+id/spn_caract_forca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/campo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2"
+            android:textColor="@color/segunda_cor_texto"
+            android:text="DETALHES:" />
+
+        <TextView
+            android:id="@+id/txt_detalhes_caract_forca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/campo_somente_leitura"
+            android:fontFamily="@font/red_rose"
+            android:textSize="15sp"
+            android:letterSpacing="0.2" />
+
 
 
 

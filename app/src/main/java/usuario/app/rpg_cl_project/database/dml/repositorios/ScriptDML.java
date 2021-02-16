@@ -1,19 +1,22 @@
 package usuario.app.rpg_cl_project.database.dml.repositorios;
 
+import usuario.app.rpg_cl_project.R;
+
+
 public class ScriptDML {
 
     private static final String categorias[] = {"Saúde", "Agressividade", "Agilidade", "Visão",
                                                 "Passada", "Forma Física", "Força"};
 
-    private static final String descricaoCategorias[] = {"Influencia em: COMBATES e MOVIMENTAÇÕES.",
-                                                        "Influencia em: COMBATES e CAPACIDADE DE SE IMPOR.",
-                                                        "Influencia em: MOVIMENTAÇÃO, COMABATE e FUGAS.",
-                                                        "Influencia em: CAPACIDADE DE VIZUALIZAÇÃO " +
+    private static final String descricaoCategorias[] = {"COMBATES e MOVIMENTAÇÕES.",
+                                                        "COMBATES e CAPACIDADE DE SE IMPOR.",
+                                                        "MOVIMENTAÇÃO, COMABATE e FUGAS.",
+                                                        "CAPACIDADE DE VIZUALIZAÇÃO " +
                                                                 "DE OBJETOS DOS CENÁRIOS",
-                                                        "Influencia em: CAPACIDADE DE NÃO SER PERCEBIDO",
-                                                        "Influencia em: INTIMIDAÇÃO DE INIMIGOS e " +
+                                                        "CAPACIDADE DE NÃO SER PERCEBIDO",
+                                                        "INTIMIDAÇÃO DE INIMIGOS e " +
                                                                 "ACESSO A PARTES DOS CENÁRIOS",
-                                                        "Influencia em: COMBATES e DEMAIS SITUAÇÕES" +
+                                                        "COMBATES e DEMAIS SITUAÇÕES" +
                                                                 " EM QUE SE PRECISE EXERCER FORÇA " +
                                                                 "SOBRE ALGO"};
 
@@ -137,7 +140,6 @@ public class ScriptDML {
     public static String retornaConsultaTodasConfiguracoesGeraisTbConfigApp(){
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT chave, valor, valor_min, valor_max FROM TB_CONFIG_APP");
-
         return sql.toString();
     }
     public static String retornaInsercaoConfigSomBotoesTuplaTbConfigApp(){
@@ -914,16 +916,18 @@ public class ScriptDML {
 
     public static String retornaConsultaCaractsCategoriaTbTipoCaractTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM TB_TIPO_CARACT, TB_CATEGORIA_TIPO ");
+        sql.append("SELECT TB_TIPO_CARACT.nome, nivel, TB_TIPO_CARACT.descricao ");
+        sql.append("FROM TB_TIPO_CARACT, ");
+        sql.append("TB_CATEGORIA_TIPO ");
         sql.append("WHERE ");
-        sql.append("TB_CATEGORIA_TIPO.nome = ?");
+        sql.append("TB_CATEGORIA_TIPO.nome = nome_categoria_tipo AND TB_CATEGORIA_TIPO.nome = ?");
 
         return sql.toString();
     }
 
     public static String retornaConsultaCategoriaTbCategoriaTipo(){
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM TB_CATEGORIA_TIPO ");
+        sql.append("SELECT nome, descricao FROM TB_CATEGORIA_TIPO ");
         sql.append("WHERE ");
         sql.append("TB_CATEGORIA_TIPO.nome = ?");
 
