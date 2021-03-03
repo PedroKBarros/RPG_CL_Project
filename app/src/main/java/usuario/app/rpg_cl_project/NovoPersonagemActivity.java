@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -19,16 +22,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import usuario.app.rpg_cl_project.auxiliar.ConjuntoGerenciadorUICaracts;
+import usuario.app.rpg_cl_project.auxiliar.ExecutaAudio;
 import usuario.app.rpg_cl_project.auxiliar.ExecutaMensagem;
 import usuario.app.rpg_cl_project.auxiliar.GerenciadorUICaracts;
 import usuario.app.rpg_cl_project.auxiliar.OperacaoCaract;
 import usuario.app.rpg_cl_project.database.ddl.DadosOpenHelper;
+import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbCaract;
 import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbConfigApp;
 import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbPersonagemJog;
 import usuario.app.rpg_cl_project.database.dml.repositorios.RepositorioTbTipoCaract;
 import usuario.app.rpg_cl_project.dominio.Caracteristica;
 import usuario.app.rpg_cl_project.dominio.ConfiguracaoApp;
 import usuario.app.rpg_cl_project.dominio.ConfiguracaoGeral;
+import usuario.app.rpg_cl_project.dominio.PersonagemJogador;
 
 public class NovoPersonagemActivity extends AppCompatActivity {
 
@@ -36,7 +43,11 @@ public class NovoPersonagemActivity extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private DadosOpenHelper dadosOpenHelper;
     private RepositorioTbTipoCaract repositorioTbTipoCaract;
+    private RepositorioTbPersonagemJog repositorioTbPersonagemJog;
+    private RepositorioTbCaract repositorioTbCaract;
     private TextView headerTitle;
+    private Button btConfirmar;
+    private EditText edtNome;
     private ExecutaMensagem executaMensagem;
     private GerenciadorUICaracts gerencUiCaractsSaude;
     private GerenciadorUICaracts gerencUiCaractsAgressividade;
@@ -45,6 +56,10 @@ public class NovoPersonagemActivity extends AppCompatActivity {
     private GerenciadorUICaracts gerencUiCaractsPassada;
     private GerenciadorUICaracts gerencUiCaractsFormaFisica;
     private GerenciadorUICaracts gerencUiCaractsForca;
+    private TextView txtTotal;
+    private ConjuntoGerenciadorUICaracts conjuntoGerenciador;
+
+    private static final int MAX_TAMANHO_NOME_PERSON = 30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +80,144 @@ public class NovoPersonagemActivity extends AppCompatActivity {
         this.defineEventoItemSelecionadoSpinnerCaractsPassada();
         this.defineEventoItemSelecionadoSpinnerCaractsFormaFisica();
         this.defineEventoItemSelecionadoSpinnerCaractsForca();
+        this.defineEventoClickBotaoConfirmar();
 
+    }
+
+    private void defineEventoClickBotaoConfirmar(){
+        btConfirmar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                defineThreadAcoesEventoClickBotaoConfirmar();
+            }
+        });
+    }
+
+    private void defineThreadAcoesEventoClickBotaoConfirmar(){
+        new Thread(new Runnable() {
+            PersonagemJogador personagemJogador;
+
+            public void run() {
+                if(!ehNomePersonagemValido()){
+                    apresentaMsgDadosInvalidos(0);
+                    return;
+                }
+                if (!conjuntoGerenciador.ehTotalIntervaloValido()) {
+                    apresentaMsgDadosInvalidos(1);
+                    return;
+                }
+                if (!conjuntoGerenciador.qtdNiveis10Permitida()) {
+                    apresentaMsgDadosInvalidos(2);
+                    return;
+                }
+                //Verificando se já não existe personagem com o mesmo nome:
+                personagemJogador =  repositorioTbPersonagemJog.buscaPersonagemJog(
+                                                                    edtNome.getText().toString());
+                if (personagemJogador != null){
+                    apresentaMsgDadosInvalidos(3);
+                    return;
+                }
+
+                //Inserindo personagem e suas características no BD:
+                inseriNovoPersonagemBD(edtNome.getText().toString());
+                inseriCaractsNovoPersonagemBD(edtNome.getText().toString());
+
+                apresentaMsgPersonagemCriado();
+
+                retornaActivityMenu();
+
+            }
+        }).start();
+    }
+
+    private void inseriNovoPersonagemBD(String nome){
+        PersonagemJogador personagemJogador = new PersonagemJogador(nome);
+        this.repositorioTbPersonagemJog.inseriTupla(personagemJogador);
+    }
+
+    private void inseriCaractsNovoPersonagemBD(String nomePersonagem){
+        PersonagemJogador personagemJogador = new PersonagemJogador(nomePersonagem);
+
+        //Saúde:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                                            this.gerencUiCaractsSaude.retornaCaractSelecionada());
+        //Agressividade:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                this.gerencUiCaractsAgressividade.retornaCaractSelecionada());
+
+        //Agilidade:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                this.gerencUiCaractsAgilidade.retornaCaractSelecionada());
+
+        //Visão:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                this.gerencUiCaractsVisao.retornaCaractSelecionada());
+
+        //Passada:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                this.gerencUiCaractsPassada.retornaCaractSelecionada());
+
+        //Forma Física:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                this.gerencUiCaractsFormaFisica.retornaCaractSelecionada());
+
+        //Força:
+        this.repositorioTbCaract.inseriTupla(personagemJogador,
+                this.gerencUiCaractsForca.retornaCaractSelecionada());
+
+
+    }
+
+    private void apresentaMsgPersonagemCriado(){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                executaMensagem.criaToast("Personagem criado com sucesso!",
+                        ExecutaMensagem.TOAST_DURACAO_CURTA);
+                executaMensagem.mostraToast();
+            }
+        });
+    }
+
+    private void apresentaMsgDadosInvalidos(int codigo){
+
+        this.runOnUiThread(new Runnable() {
+            public void run() {
+                switch (codigo){
+                    case 0:
+                        executaMensagem.criaToast("Ops!\nO nome do novo personagem não foi preenchido.",
+                                ExecutaMensagem.TOAST_DURACAO_LONGA);
+                        executaMensagem.mostraToast();
+                        break;
+                    case 1:
+                        executaMensagem.criaToast("Ops!\nO total deve variar de " +
+                                        ConjuntoGerenciadorUICaracts.getMinimoTotal() + " até " +
+                                        ConjuntoGerenciadorUICaracts.getMaximoTotal() + ".",
+                                ExecutaMensagem.TOAST_DURACAO_LONGA);
+                        executaMensagem.mostraToast();
+                        break;
+                    case 2:
+                        executaMensagem.criaToast("Ops!\nSó é permitido no máximo " +
+                                        ConjuntoGerenciadorUICaracts.getMaximoNiveis10() +
+                                        " níveis 10.",
+                                ExecutaMensagem.TOAST_DURACAO_LONGA);
+                        executaMensagem.mostraToast();
+                        break;
+                    case 3:
+                        executaMensagem.criaToast("Ops!\nJá existe um personagem criado com " +
+                                        "esse nome.",
+                                ExecutaMensagem.TOAST_DURACAO_LONGA);
+                        executaMensagem.mostraToast();
+                        break;
+                }
+            }
+        });
+
+    }
+
+    private boolean ehNomePersonagemValido(){
+        //Obs.: a qtd máxima de caracteres foi definida no XML da activity.
+        return this.edtNome.getText().length() > 0;
     }
 
     private void defineEventoItemSelecionadoSpinnerCaractsSaude(){
@@ -77,10 +229,12 @@ public class NovoPersonagemActivity extends AppCompatActivity {
                             public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
                                                        int position, long id) {
                                 Caracteristica caract = gerencUiCaractsSaude.retornaCaractSelecionada();
+                                int totalNivelCaracts = conjuntoGerenciador.calculaTotal();
 
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsSaude.formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(totalNivelCaracts);
                                     }
                                 });
 
@@ -115,10 +269,13 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
                                 Caracteristica caract = gerencUiCaractsAgressividade.
                                                                         retornaCaractSelecionada();
+                                int total = conjuntoGerenciador.calculaTotal();
+
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsAgressividade.
                                                             formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(total);
                                     }
                                 });
 
@@ -152,10 +309,13 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
                                 Caracteristica caract = gerencUiCaractsAgilidade.
                                                                         retornaCaractSelecionada();
+                                int total = conjuntoGerenciador.calculaTotal();
+
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsAgilidade.
                                                 formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(total);
                                     }
                                 });
 
@@ -189,10 +349,13 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
                                 Caracteristica caract = gerencUiCaractsVisao.
                                         retornaCaractSelecionada();
+                                int total = conjuntoGerenciador.calculaTotal();
+
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsVisao.
                                                 formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(total);
                                     }
                                 });
 
@@ -226,10 +389,13 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
                                 Caracteristica caract = gerencUiCaractsPassada.
                                         retornaCaractSelecionada();
+                                int total = conjuntoGerenciador.calculaTotal();
+
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsPassada.
                                                 formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(total);
                                     }
                                 });
 
@@ -257,11 +423,13 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
                                 Caracteristica caract =
                                             gerencUiCaractsFormaFisica.retornaCaractSelecionada();
+                                int total = conjuntoGerenciador.calculaTotal();
 
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsFormaFisica.
                                                             formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(total);
                                     }
                                 });
 
@@ -295,10 +463,13 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
                                 Caracteristica caract = gerencUiCaractsForca.
                                         retornaCaractSelecionada();
+                                int total = conjuntoGerenciador.calculaTotal();
+
                                 activityAtual.runOnUiThread(new Runnable() {
                                     public void run() {
                                         gerencUiCaractsForca.
                                                 formataUiPorCaractSelecionada(caract);
+                                        conjuntoGerenciador.atualizaUiTotal(total);
                                     }
                                 });
 
@@ -494,6 +665,9 @@ public class NovoPersonagemActivity extends AppCompatActivity {
         this.activityAtual = this;
         this.headerTitle = (TextView) findViewById(R.id.txt_titulo_cabecalho);
         this.executaMensagem = new ExecutaMensagem(this);
+        this.txtTotal = (TextView) findViewById(R.id.txt_total_nivel_caracts);
+        this.btConfirmar = (Button) findViewById(R.id.anp_bt_confirmar);
+        this.edtNome = (EditText) findViewById(R.id.edt_nome_pers);
 
         //Saúde:
         this.gerencUiCaractsSaude = new GerenciadorUICaracts(
@@ -540,10 +714,22 @@ public class NovoPersonagemActivity extends AppCompatActivity {
                 (Spinner) findViewById(R.id.spn_caract_forca),
                 (TextView) findViewById(R.id.txt_detalhes_caract_forca));
 
+        //Conjunto gerenciador:
+        this.conjuntoGerenciador = new ConjuntoGerenciadorUICaracts(this.txtTotal);
+        this.conjuntoGerenciador.addVarios(
+                this.gerencUiCaractsSaude,
+                this.gerencUiCaractsAgressividade,
+                this.gerencUiCaractsAgilidade,
+                this.gerencUiCaractsVisao,
+                this.gerencUiCaractsPassada,
+                this.gerencUiCaractsFormaFisica,
+                this.gerencUiCaractsForca);
     }
 
     private void instanciaRepositorios(){
         this.repositorioTbTipoCaract = new RepositorioTbTipoCaract(conexao);
+        this.repositorioTbPersonagemJog = new RepositorioTbPersonagemJog(conexao);
+        this.repositorioTbCaract = new RepositorioTbCaract(conexao);
     }
 
     private void estabeleceConexaoBD() throws android.database.SQLException{
@@ -556,9 +742,15 @@ public class NovoPersonagemActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy(){
+
         super.onDestroy();
 
         this.liberaRecursos();
+    }
+
+    private void retornaActivityMenu(){
+        Intent t = new Intent(this, MenuAcitivity.class);
+        startActivity(t);
     }
 
     private void fechaConexao(){

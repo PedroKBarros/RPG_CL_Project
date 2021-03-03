@@ -15,7 +15,7 @@ public class RepositorioTbConfigApp {
 
     public RepositorioTbConfigApp(SQLiteDatabase conexao){ this.conexao = conexao; }
 
-    public void inserirTupla(ConfiguracaoGeral configuracaoGeral){
+    public void inseriTupla(ConfiguracaoGeral configuracaoGeral){
         ContentValues contentValues = new ContentValues();
         contentValues.put("chave", configuracaoGeral.getChave());
         contentValues.put("valor_min", configuracaoGeral.getValorMin());

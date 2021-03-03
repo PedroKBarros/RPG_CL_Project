@@ -31,37 +31,12 @@ public class GerenciadorUICaracts {
         this.caracts = new ArrayList<Caracteristica>();
     }
 
-
     public Caracteristica retornaCaractSelecionada(){
         String itemSelecionado = (String) this.uiCaracts.getSelectedItem();
 
         for(Caracteristica c : this.caracts){
             if (c.getNome().compareTo(itemSelecionado) == 0){
                 return c;
-            }
-        }
-        return null;
-    }
-
-    public Caracteristica retornaCaractSelecionada(int indiceCaractLista){
-
-        if (indiceCaractLista < 0 || indiceCaractLista >= this.caracts.size())
-            return null;
-
-        return this.caracts.get(indiceCaractLista);
-    }
-
-    public Caracteristica retornaCaractSelecionada(String nomeCaract, boolean diferenciarMaiscMinusc){
-
-        for(Caracteristica c : this.caracts){
-            if (diferenciarMaiscMinusc){
-                if (c.getNome().compareToIgnoreCase(nomeCaract) == 0){
-                    return c;
-                }
-            }else{
-                if (c.getNome().compareTo(nomeCaract) == 0){
-                    return c;
-                }
             }
         }
         return null;

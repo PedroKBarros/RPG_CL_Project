@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_layout_carreg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#B0000000"
+    android:visibility="visible">
+
+    <TextView
+        android:id="@+id/msg_carregamento"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:fontFamily="@font/red_rose"
+        android:textSize="16sp"
+        android:letterSpacing="0.2"
+        android:textColor="@color/segunda_cor_texto"
+        android:text="AGUARDE\nCARREGANDO..." />
+
+</LinearLayout>

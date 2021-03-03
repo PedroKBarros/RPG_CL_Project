@@ -32,6 +32,7 @@
             android:layout_marginRight="30dp"
             android:background="@drawable/campo"
             android:inputType="text"
+            android:maxLength="30"
             android:fontFamily="@font/red_rose"
             android:textSize="15sp"
             android:letterSpacing="0.2"
@@ -438,9 +439,50 @@
             android:letterSpacing="0.2" />
 
 
+     <!--Views Total:-->
 
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="30dp"
+         android:layout_marginLeft="30dp"
+         android:layout_marginRight="30dp"
+         android:fontFamily="@font/red_rose"
+         android:textSize="16sp"
+         android:letterSpacing="0.2"
+         android:textColor="@color/segunda_cor_texto"
+         android:text="TOTAL:" />
 
+     <TextView
+         android:id="@+id/txt_total_nivel_caracts"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="30dp"
+         android:layout_marginRight="30dp"
+         android:gravity="center_horizontal"
+         android:layout_gravity="center_horizontal"
+         android:background="@drawable/elipse_total_caracts"
+         android:fontFamily="@font/red_rose"
+         android:textSize="35sp"
+         android:letterSpacing="0.2"
+         android:textColor="@color/segunda_cor_texto"
+         android:text=" 14 " />
 
+        <Button
+            android:id="@+id/anp_bt_confirmar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/botao"
+            android:fontFamily="@font/red_rose"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="CONFIRMAR" />
 
     </LinearLayout>
 </ScrollView>

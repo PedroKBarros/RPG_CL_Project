@@ -933,4 +933,13 @@ public class ScriptDML {
 
         return sql.toString();
     }
+
+    public static String retornaConsultaPersonagemJogadorTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT nome, tot_objs_alcancados FROM TB_PERSONAGEM_JOG ");
+        sql.append("WHERE ");
+        sql.append("nome = ?");
+
+        return sql.toString();
+    }
 }
