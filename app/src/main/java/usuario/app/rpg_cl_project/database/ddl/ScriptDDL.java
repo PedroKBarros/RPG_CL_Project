@@ -55,10 +55,14 @@ public class ScriptDDL {
     public static String getCreateTableTbCaract(){
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT(nome_personagem_jog VARCHAR(30) NOT NULL, ");
+        sql.append("nome_categoria_tipo VARCHAR(20) NOT NULL, ");
         sql.append("nome_tipo_caract VARCHAR(20) NOT NULL, ");
-        sql.append("CONSTRAINT pk_tb_caract PRIMARY KEY(nome_personagem_jog, nome_tipo_caract), ");
+        sql.append("CONSTRAINT pk_tb_caract PRIMARY KEY(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract), ");
         sql.append("CONSTRAINT fk_tb_caract_tb_personagem_jog FOREIGN KEY(nome_personagem_jog) ");
         sql.append("REFERENCES TB_PERSONAGEM_JOG(nome), ");
+        sql.append("CONSTRAINT fk_tb_caract_tb_categoria_tipo FOREIGN KEY(nome_categoria_tipo) ");
+        sql.append("REFERENCES TB_CATEGORIA_TIPO(nome), ");
         sql.append("CONSTRAINT fk_tb_caract_tb_tipo_caract FOREIGN KEY(nome_tipo_caract) ");
         sql.append("REFERENCES TB_TIPO_CARACT(nome))");
 
@@ -194,10 +198,14 @@ public class ScriptDDL {
     public static String getCreateTableTbCaractAcao(){
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT_ACAO(id_acao INTEGER NOT NULL, ");
+        sql.append("nome_categoria_tipo VARCHAR(20) NOT NULL, ");
         sql.append("nome_tipo_caract VARCHAR(20) NOT NULL, ");
-        sql.append("CONSTRAINT pk_tb_caract_acao PRIMARY KEY(id_acao, nome_tipo_caract), ");
+        sql.append("CONSTRAINT pk_tb_caract_acao PRIMARY KEY(id_acao, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract), ");
         sql.append("CONSTRAINT fk_tb_caract_acao_tb_acao FOREIGN KEY(id_acao) ");
         sql.append("REFERENCES tb_acao(id), ");
+        sql.append("CONSTRAINT fk_tb_caract_acao_tb_categoria_tipo FOREIGN KEY(nome_categoria_tipo) ");
+        sql.append("REFERENCES TB_CATEGORIA_TIPO(nome), ");
         sql.append("CONSTRAINT fk_tb_caract_acao_tb_tipo_caract FOREIGN KEY(nome_tipo_caract) ");
         sql.append("REFERENCES tb_tipo_caract(nome))");
 
@@ -207,10 +215,14 @@ public class ScriptDDL {
     public static String getCreateTableTbCaractEvento(){
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS TB_CARACT_EVENTO(id_evento INTEGER NOT NULL, ");
+        sql.append("nome_categoria_tipo VARCHAR(20) NOT NULL, ");
         sql.append("nome_tipo_caract VARCHAR(20) NOT NULL, ");
-        sql.append("CONSTRAINT pk_tb_caract_evento PRIMARY KEY(id_evento, nome_tipo_caract), ");
+        sql.append("CONSTRAINT pk_tb_caract_evento PRIMARY KEY(id_evento, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract), ");
         sql.append("CONSTRAINT fk_tb_caract_evento_tb_evento FOREIGN KEY(id_evento) ");
         sql.append("REFERENCES tb_evento(id), ");
+        sql.append("CONSTRAINT fk_tb_caract_evento_tb_categoria_tipo FOREIGN KEY(nome_categoria_tipo) ");
+        sql.append("REFERENCES TB_CATEGORIA_TIPO(nome), ");
         sql.append("CONSTRAINT fk_tb_caract_evento_tb_tipo_caract FOREIGN KEY(nome_tipo_caract) ");
         sql.append("REFERENCES tb_tipo_caract(nome))");
 

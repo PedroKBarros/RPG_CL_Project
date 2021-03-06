@@ -14,6 +14,7 @@ public class RepositorioTbCaract {
     public void inseriTupla(PersonagemJogador personagemJogador, Caracteristica caracteristica){
         ContentValues contentValues = new ContentValues();
         contentValues.put("nome_personagem_jog", personagemJogador.getNome());
+        contentValues.put("nome_categoria_tipo", caracteristica.getCategoria().getNome());
         contentValues.put("nome_tipo_caract", caracteristica.getNome());
 
         conexao.insertOrThrow("TB_CARACT", null, contentValues); //Esse método insere os dados no BD, podendo gerar uma exceção caso ocorra um erro, e se não ocorrer, retorna
