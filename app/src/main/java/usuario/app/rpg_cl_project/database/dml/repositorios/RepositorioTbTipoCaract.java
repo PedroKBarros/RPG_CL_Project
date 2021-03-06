@@ -40,7 +40,7 @@ public class RepositorioTbTipoCaract {
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
             do{
-                nome = cursor.getString(cursor.getColumnIndex(NOME_TABELA + ".nome"));
+                nome = cursor.getString(cursor.getColumnIndex("nome"));
                 nivel = cursor.getInt(cursor.getColumnIndex("nivel"));
                 descricao = cursor.getString(cursor.getColumnIndex("descricao"));
 
