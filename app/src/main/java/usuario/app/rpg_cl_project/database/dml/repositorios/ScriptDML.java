@@ -135,6 +135,8 @@ public class ScriptDML {
                                                                                             "corpo!"};
 
 
+    private static final String nomePersonagensPrevios[] = {"Lovelace", "Ciclópico", "Killer Man",
+                                                                        "Ocípete", "Nise", "Cháos"};
 
 
     public static String retornaConsultaTodasConfiguracoesGeraisTbConfigApp(){
@@ -904,6 +906,772 @@ public class ScriptDML {
     }
 
     //-------------------------------------------------------------------------------------
+
+    public static String retornaInsercaoPersonagemLovelaceTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_PERSONAGEM_JOG(nome, tot_objs_alcancados) VALUES('");
+                sql.append(nomePersonagensPrevios[0]);
+                sql.append("', 0)");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoPersonagemCiclopicoTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_PERSONAGEM_JOG(nome, tot_objs_alcancados) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', 0)");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoPersonagemKillerManTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_PERSONAGEM_JOG(nome, tot_objs_alcancados) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', 0)");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoPersonagemOcipeteTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_PERSONAGEM_JOG(nome, tot_objs_alcancados) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', 0)");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoPersonagemNiseTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_PERSONAGEM_JOG(nome, tot_objs_alcancados) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', 0)");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoPersonagemChaosTbPersonagemJog(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO TB_PERSONAGEM_JOG(nome, tot_objs_alcancados) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', 0)");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCaractCategoriaSaudePersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+        //Saúde:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[0]);
+        sql.append("', '");
+        sql.append(caractsCategoria0[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgressividadePersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agressividade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[1]);
+        sql.append("', '");
+        sql.append(caractsCategoria1[3]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgilidadePersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agilidade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[2]);
+        sql.append("', '");
+        sql.append(caractsCategoria2[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaVisaoPersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Visão:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[3]);
+        sql.append("', '");
+        sql.append(caractsCategoria3[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaPassadaPersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Passada:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[4]);
+        sql.append("', '");
+        sql.append(caractsCategoria4[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaFormaFisicaPersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Forma Física:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[5]);
+        sql.append("', '");
+        sql.append(caractsCategoria5[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaForcaPersonagemLovelaceTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Força:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[0]);
+        sql.append("', '");
+        sql.append(categorias[6]);
+        sql.append("', '");
+        sql.append(caractsCategoria6[2]);
+        sql.append("')");
+
+        return sql.toString();
+    }
+
+
+
+
+    public static String retornaInsercaoCaractCategoriaSaudePersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+        //Saúde:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[0]);
+        sql.append("', '");
+        sql.append(caractsCategoria0[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgressividadePersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agressividade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[1]);
+        sql.append("', '");
+        sql.append(caractsCategoria1[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgilidadePersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agilidade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[2]);
+        sql.append("', '");
+        sql.append(caractsCategoria2[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaVisaoPersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Visão:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[3]);
+        sql.append("', '");
+        sql.append(caractsCategoria3[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaPassadaPersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Passada:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[4]);
+        sql.append("', '");
+        sql.append(caractsCategoria4[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaFormaFisicaPersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Forma Física:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[5]);
+        sql.append("', '");
+        sql.append(caractsCategoria5[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaForcaPersonagemCiclopicoTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Força:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[1]);
+        sql.append("', '");
+        sql.append(categorias[6]);
+        sql.append("', '");
+        sql.append(caractsCategoria6[0]);
+        sql.append("')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCaractCategoriaSaudePersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+        //Saúde:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[0]);
+        sql.append("', '");
+        sql.append(caractsCategoria0[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgressividadePersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agressividade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[1]);
+        sql.append("', '");
+        sql.append(caractsCategoria1[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgilidadePersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agilidade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[2]);
+        sql.append("', '");
+        sql.append(caractsCategoria2[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaVisaoPersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Visão:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[3]);
+        sql.append("', '");
+        sql.append(caractsCategoria3[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaPassadaPersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Passada:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[4]);
+        sql.append("', '");
+        sql.append(caractsCategoria4[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaFormaFisicaPersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Forma Física:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[5]);
+        sql.append("', '");
+        sql.append(caractsCategoria5[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaForcaPersonagemKillerManTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Força:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[2]);
+        sql.append("', '");
+        sql.append(categorias[6]);
+        sql.append("', '");
+        sql.append(caractsCategoria6[1]);
+        sql.append("')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCaractCategoriaSaudePersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+        //Saúde:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[0]);
+        sql.append("', '");
+        sql.append(caractsCategoria0[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgressividadePersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agressividade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[1]);
+        sql.append("', '");
+        sql.append(caractsCategoria1[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgilidadePersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agilidade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[2]);
+        sql.append("', '");
+        sql.append(caractsCategoria2[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaVisaoPersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Visão:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[3]);
+        sql.append("', '");
+        sql.append(caractsCategoria3[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaPassadaPersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Passada:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[4]);
+        sql.append("', '");
+        sql.append(caractsCategoria4[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaFormaFisicaPersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Forma Física:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[5]);
+        sql.append("', '");
+        sql.append(caractsCategoria5[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaForcaPersonagemOcipeteTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Força:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[3]);
+        sql.append("', '");
+        sql.append(categorias[6]);
+        sql.append("', '");
+        sql.append(caractsCategoria6[1]);
+        sql.append("')");
+
+        return sql.toString();
+    }
+
+    public static String retornaInsercaoCaractCategoriaSaudePersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+        //Saúde:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[0]);
+        sql.append("', '");
+        sql.append(caractsCategoria0[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgressividadePersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agressividade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[1]);
+        sql.append("', '");
+        sql.append(caractsCategoria1[3]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgilidadePersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agilidade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[2]);
+        sql.append("', '");
+        sql.append(caractsCategoria2[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaVisaoPersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Visão:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[3]);
+        sql.append("', '");
+        sql.append(caractsCategoria3[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaPassadaPersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Passada:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[4]);
+        sql.append("', '");
+        sql.append(caractsCategoria4[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaFormaFisicaPersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Forma Física:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[5]);
+        sql.append("', '");
+        sql.append(caractsCategoria5[2]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaForcaPersonagemNiseTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Força:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[4]);
+        sql.append("', '");
+        sql.append(categorias[6]);
+        sql.append("', '");
+        sql.append(caractsCategoria6[3]);
+        sql.append("')");
+
+        return sql.toString();
+    }
+
+
+
+
+
+    public static String retornaInsercaoCaractCategoriaSaudePersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+        //Saúde:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[0]);
+        sql.append("', '");
+        sql.append(caractsCategoria0[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgressividadePersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agressividade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[1]);
+        sql.append("', '");
+        sql.append(caractsCategoria1[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaAgilidadePersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Agilidade:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[2]);
+        sql.append("', '");
+        sql.append(caractsCategoria2[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaVisaoPersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Visão:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[3]);
+        sql.append("', '");
+        sql.append(caractsCategoria3[0]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaPassadaPersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Passada:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[4]);
+        sql.append("', '");
+        sql.append(caractsCategoria4[4]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaFormaFisicaPersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Forma Física:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[5]);
+        sql.append("', '");
+        sql.append(caractsCategoria5[1]);
+        sql.append("')");
+
+        return sql.toString();
+
+    }
+
+    public static String retornaInsercaoCaractCategoriaForcaPersonagemChaosTbCaract() {
+        StringBuilder sql = new StringBuilder();
+
+        //Força:
+        sql.append("INSERT INTO TB_CARACT(nome_personagem_jog, nome_categoria_tipo, ");
+        sql.append("nome_tipo_caract) VALUES('");
+        sql.append(nomePersonagensPrevios[5]);
+        sql.append("', '");
+        sql.append(categorias[6]);
+        sql.append("', '");
+        sql.append(caractsCategoria6[0]);
+        sql.append("')");
+
+        return sql.toString();
+    }
+
+
+
 
     public static String retornaConsultaValorConfiguracaoEspecificaTbConfigApp(){
         StringBuilder sql = new StringBuilder();

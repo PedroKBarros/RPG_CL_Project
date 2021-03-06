@@ -101,6 +101,63 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
         db.execSQL(ScriptDML.retornaInsercaoCaract3Categoria6TbTipoCaract());
         db.execSQL(ScriptDML.retornaInsercaoCaract4Categoria6TbTipoCaract());
 
+        // TB_PERSONAGEM_JOG:
+        db.execSQL(ScriptDML.retornaInsercaoPersonagemLovelaceTbPersonagemJog());
+        db.execSQL(ScriptDML.retornaInsercaoPersonagemCiclopicoTbPersonagemJog());
+        db.execSQL(ScriptDML.retornaInsercaoPersonagemKillerManTbPersonagemJog());
+        db.execSQL(ScriptDML.retornaInsercaoPersonagemOcipeteTbPersonagemJog());
+        db.execSQL(ScriptDML.retornaInsercaoPersonagemNiseTbPersonagemJog());
+        db.execSQL(ScriptDML.retornaInsercaoPersonagemChaosTbPersonagemJog());
+
+        //TB_CARACT:
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaSaudePersonagemLovelaceTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgressividadePersonagemLovelaceTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgilidadePersonagemLovelaceTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaVisaoPersonagemLovelaceTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaPassadaPersonagemLovelaceTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaFormaFisicaPersonagemLovelaceTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaForcaPersonagemLovelaceTbCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaSaudePersonagemCiclopicoTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgressividadePersonagemCiclopicoTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgilidadePersonagemCiclopicoTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaVisaoPersonagemCiclopicoTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaPassadaPersonagemCiclopicoTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaFormaFisicaPersonagemCiclopicoTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaForcaPersonagemCiclopicoTbCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaSaudePersonagemKillerManTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgressividadePersonagemKillerManTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgilidadePersonagemKillerManTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaVisaoPersonagemKillerManTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaPassadaPersonagemKillerManTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaFormaFisicaPersonagemKillerManTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaForcaPersonagemKillerManTbCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaSaudePersonagemOcipeteTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgressividadePersonagemOcipeteTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgilidadePersonagemOcipeteTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaVisaoPersonagemOcipeteTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaPassadaPersonagemOcipeteTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaFormaFisicaPersonagemOcipeteTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaForcaPersonagemOcipeteTbCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaSaudePersonagemNiseTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgressividadePersonagemNiseTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgilidadePersonagemNiseTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaVisaoPersonagemNiseTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaPassadaPersonagemNiseTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaFormaFisicaPersonagemNiseTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaForcaPersonagemNiseTbCaract());
+
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaSaudePersonagemChaosTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgressividadePersonagemChaosTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaAgilidadePersonagemChaosTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaVisaoPersonagemChaosTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaPassadaPersonagemChaosTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaFormaFisicaPersonagemChaosTbCaract());
+        db.execSQL(ScriptDML.retornaInsercaoCaractCategoriaForcaPersonagemChaosTbCaract());
+
     }
 
     @Override
